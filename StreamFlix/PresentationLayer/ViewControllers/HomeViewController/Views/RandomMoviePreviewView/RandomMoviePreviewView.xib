@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RandomMoviePreviewView" customModule="StreamFlix" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="545" id="KGk-i7-Jjw" customClass="RandomMoviePreviewView" customModule="StreamFlix" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="407" height="500"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="407" height="500"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFW-F5-Iwb">
+                        <rect key="frame" x="0.0" y="0.0" width="407" height="500"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movieThumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="QRg-3Q-S3Q">
+                                <rect key="frame" x="0.0" y="0.0" width="407" height="500"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WrK-pe-H0a">
+                                <rect key="frame" x="0.0" y="0.0" width="407" height="500"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aY-bM-s15">
+                                <rect key="frame" x="70" y="416" width="120" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="10H-bE-R6r"/>
+                                    <constraint firstAttribute="height" constant="34" id="BRX-ez-ieG"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Play"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XG-bh-wLg">
+                                <rect key="frame" x="217" y="416" width="120" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="gIi-M8-xcz"/>
+                                    <constraint firstAttribute="height" constant="34" id="pLC-dw-9eB"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Download"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WrK-pe-H0a" firstAttribute="leading" secondItem="kFW-F5-Iwb" secondAttribute="leading" id="0zm-0h-Yqw"/>
+                            <constraint firstAttribute="trailing" secondItem="7XG-bh-wLg" secondAttribute="trailing" constant="70" id="A5I-8A-odF"/>
+                            <constraint firstItem="WrK-pe-H0a" firstAttribute="top" secondItem="kFW-F5-Iwb" secondAttribute="top" id="Bem-Br-dUb"/>
+                            <constraint firstAttribute="bottom" secondItem="4aY-bM-s15" secondAttribute="bottom" constant="50" id="FMd-rM-hHa"/>
+                            <constraint firstAttribute="trailing" secondItem="WrK-pe-H0a" secondAttribute="trailing" id="G20-68-leQ"/>
+                            <constraint firstAttribute="bottom" secondItem="QRg-3Q-S3Q" secondAttribute="bottom" id="Itf-GR-ZCF"/>
+                            <constraint firstItem="4aY-bM-s15" firstAttribute="leading" secondItem="kFW-F5-Iwb" secondAttribute="leading" constant="70" id="cTz-Yo-ENs"/>
+                            <constraint firstAttribute="height" constant="500" id="cWg-bs-EDE"/>
+                            <constraint firstItem="QRg-3Q-S3Q" firstAttribute="leading" secondItem="kFW-F5-Iwb" secondAttribute="leading" id="iCL-kQ-Lit"/>
+                            <constraint firstItem="QRg-3Q-S3Q" firstAttribute="top" secondItem="kFW-F5-Iwb" secondAttribute="top" id="l07-Fl-EEM"/>
+                            <constraint firstAttribute="bottom" secondItem="WrK-pe-H0a" secondAttribute="bottom" id="nHo-5b-0Me"/>
+                            <constraint firstAttribute="trailing" secondItem="QRg-3Q-S3Q" secondAttribute="trailing" id="tZ7-Dd-HeI"/>
+                            <constraint firstAttribute="bottom" secondItem="7XG-bh-wLg" secondAttribute="bottom" constant="50" id="tbK-v6-NEn"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="kFW-F5-Iwb" secondAttribute="trailing" id="EqN-B2-MSt"/>
+                    <constraint firstItem="kFW-F5-Iwb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="J2y-VS-X1J"/>
+                    <constraint firstAttribute="bottom" secondItem="kFW-F5-Iwb" secondAttribute="bottom" id="Uj3-Kk-ViP"/>
+                    <constraint firstItem="kFW-F5-Iwb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ezp-ta-GfN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="gradiantLayerView" destination="WrK-pe-H0a" id="ikB-iT-SFE"/>
+                <outlet property="movieDownlaodButton" destination="7XG-bh-wLg" id="EG7-hE-5dS"/>
+                <outlet property="movieImageView" destination="QRg-3Q-S3Q" id="uYu-kY-S1M"/>
+                <outlet property="moviePlayButton" destination="4aY-bM-s15" id="8mu-vR-e0w"/>
+            </connections>
+            <point key="canvasLocation" x="-202.29007633587784" y="-16.549295774647888"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="movieThumbnail" width="960" height="1201"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

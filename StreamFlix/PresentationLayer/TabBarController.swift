@@ -34,6 +34,8 @@ class TabBarController: UITabBarController {
         
         let tabBarNavigationControllers = [homeNavigationController, searchNavigationController, commingSoonNavigationController, downloadsNavigationController]
         
+        self.tabBar.tintColor = .label
+        
         setViewControllers(tabBarNavigationControllers, animated: true)
     }
 
