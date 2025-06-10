@@ -20,9 +20,11 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     let sections: [Sections] = Sections.allCases
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
+        self.configureNavBar()
         // Do any additional setup after loading the view.
     }
     func setupUI() {
@@ -36,6 +38,17 @@ class HomeViewController: UIViewController {
         
     }
 
+    func configureNavBar() {
+        var leftImage = UIImage(named: "netflix_logo")
+        leftImage = leftImage?.withRenderingMode(.alwaysOriginal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: leftImage, style: .done, target: self, action: nil)
+        let rightImages = [UIImage(systemName: "person"), UIImage(systemName: "play.rectangle")]
+        navigationItem.rightBarButtonItems = rightImages.map {
+            UIBarButtonItem(image: $0, style: .done, target: self, action: nil)
+        }
+            navigationController?.navigationBar.tintColor = .white
+        
+    }
 
 }
 
@@ -58,28 +71,26 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         header.textLabel?.text = sections[section].rawValue
     }
     
-    
-    
 }
 
-struct HomeViewControllerRepresentable: UIViewControllerRepresentable {
-    
-    typealias UIViewControllerType = HomeViewController
-    
-    func makeUIViewController(context: Context) -> HomeViewController {
-        return HomeViewController()
-    }
-    
-    func updateUIViewController(_ uiViewController: HomeViewController, context: Context) {
-        
-    }
-    
-}
-
-struct HomeViewControllerPreviewViewRepresentable_Preview: PreviewProvider {
-    static var previews: some View {
-        HomeViewControllerRepresentable()
-    }
-}
+//struct HomeViewControllerRepresentable: UIViewControllerRepresentable {
+//    
+//    typealias UIViewControllerType = HomeViewController
+//    
+//    func makeUIViewController(context: Context) -> HomeViewController {
+//        return HomeViewController()
+//    }
+//    
+//    func updateUIViewController(_ uiViewController: HomeViewController, context: Context) {
+//        
+//    }
+//    
+//}
+//
+//struct HomeViewControllerPreviewViewRepresentable_Preview: PreviewProvider {
+//    static var previews: some View {
+//        HomeViewControllerRepresentable()
+//    }
+//}
 
 
