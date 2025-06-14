@@ -25,7 +25,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.setupUI()
         self.configureNavBar()
-        // Do any additional setup after loading the view.
+        APICaller.shared.getTrendingMovies(completion: { [weak self] trendingMoviesResponse in
+            print(trendingMoviesResponse)
+        })
     }
     func setupUI() {
         self.setupTableViewHeader()
@@ -64,11 +66,19 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         5
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Top Trending"
+        sections[section].rawValue
     }
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.textLabel?.text = sections[section].rawValue
+        header.textLabel?.textColor = .label
+        header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+        header.frame = .init(x: view.bounds.origin.x + 20, y: view.bounds.origin.y, width: view.bounds.width, height: view.bounds.height)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let defaultOffset = view.safeAreaInsets.top
+        let offset = scrollView.contentOffset.y + defaultOffset
+        navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
     
 }

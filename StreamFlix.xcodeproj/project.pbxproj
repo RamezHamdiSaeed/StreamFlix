@@ -6,6 +6,29 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FA65165A2DFD7148006BDE9F /* TrendingMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6516592DFD7140006BDE9F /* TrendingMovies.swift */; };
+		FAEE31CF2DF988F000E9381E /* CommingSoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31B02DF988F000E9381E /* CommingSoonViewController.swift */; };
+		FAEE31D02DF988F000E9381E /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31B32DF988F000E9381E /* DownloadsViewController.swift */; };
+		FAEE31D12DF988F000E9381E /* RandomMoviePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31B62DF988F000E9381E /* RandomMoviePreviewView.swift */; };
+		FAEE31D22DF988F000E9381E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31BA2DF988F000E9381E /* HomeViewController.swift */; };
+		FAEE31D32DF988F000E9381E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31BD2DF988F000E9381E /* SearchViewController.swift */; };
+		FAEE31D42DF988F000E9381E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31C12DF988F000E9381E /* TabBarController.swift */; };
+		FAEE31D52DF988F000E9381E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31C32DF988F000E9381E /* AppDelegate.swift */; };
+		FAEE31D62DF988F000E9381E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31CA2DF988F000E9381E /* SceneDelegate.swift */; };
+		FAEE31D72DF988F000E9381E /* StreamFlix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31CB2DF988F000E9381E /* StreamFlix.xcdatamodeld */; };
+		FAEE31D82DF988F000E9381E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31CC2DF988F000E9381E /* ViewController.swift */; };
+		FAEE31D92DF988F000E9381E /* CommingSoonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31B12DF988F000E9381E /* CommingSoonViewController.xib */; };
+		FAEE31DA2DF988F000E9381E /* DownloadsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31B42DF988F000E9381E /* DownloadsViewController.xib */; };
+		FAEE31DB2DF988F000E9381E /* RandomMoviePreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31B72DF988F000E9381E /* RandomMoviePreviewView.xib */; };
+		FAEE31DC2DF988F000E9381E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31BB2DF988F000E9381E /* HomeViewController.xib */; };
+		FAEE31DD2DF988F000E9381E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31BE2DF988F000E9381E /* SearchViewController.xib */; };
+		FAEE31DE2DF988F000E9381E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31C42DF988F000E9381E /* Assets.xcassets */; };
+		FAEE31E02DF988F000E9381E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31C72DF988F000E9381E /* LaunchScreen.storyboard */; };
+		FAEE31E12DF988F000E9381E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31C92DF988F000E9381E /* Main.storyboard */; };
+		FAEE31E42DF9890B00E9381E /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31E32DF9890600E9381E /* APICaller.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		FAA958752DBEB31E007F9E12 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,30 +47,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA6516592DFD7140006BDE9F /* TrendingMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMovies.swift; sourceTree = "<group>"; };
 		FAA9585B2DBEB31D007F9E12 /* StreamFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA958742DBEB31E007F9E12 /* StreamFlixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamFlixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA9587E2DBEB31E007F9E12 /* StreamFlixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamFlixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAEE31B02DF988F000E9381E /* CommingSoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingSoonViewController.swift; sourceTree = "<group>"; };
+		FAEE31B12DF988F000E9381E /* CommingSoonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommingSoonViewController.xib; sourceTree = "<group>"; };
+		FAEE31B32DF988F000E9381E /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		FAEE31B42DF988F000E9381E /* DownloadsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadsViewController.xib; sourceTree = "<group>"; };
+		FAEE31B62DF988F000E9381E /* RandomMoviePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMoviePreviewView.swift; sourceTree = "<group>"; };
+		FAEE31B72DF988F000E9381E /* RandomMoviePreviewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RandomMoviePreviewView.xib; sourceTree = "<group>"; };
+		FAEE31BA2DF988F000E9381E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FAEE31BB2DF988F000E9381E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		FAEE31BD2DF988F000E9381E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FAEE31BE2DF988F000E9381E /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		FAEE31C12DF988F000E9381E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		FAEE31C32DF988F000E9381E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FAEE31C42DF988F000E9381E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FAEE31C52DF988F000E9381E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAEE31C62DF988F000E9381E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FAEE31C82DF988F000E9381E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FAEE31CA2DF988F000E9381E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FAEE31CC2DF988F000E9381E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FAEE31CE2DF988F000E9381E /* StreamFlix.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StreamFlix.xcdatamodel; sourceTree = "<group>"; };
+		FAEE31E32DF9890600E9381E /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		FAA958862DBEB31E007F9E12 /* Exceptions for "StreamFlix" folder in "StreamFlix" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = FAA9585A2DBEB31D007F9E12 /* StreamFlix */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		FAA9585D2DBEB31D007F9E12 /* StreamFlix */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				FAA958862DBEB31E007F9E12 /* Exceptions for "StreamFlix" folder in "StreamFlix" target */,
-			);
-			path = StreamFlix;
-			sourceTree = "<group>";
-		};
 		FAA958772DBEB31E007F9E12 /* StreamFlixTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = StreamFlixTests;
@@ -85,10 +111,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA6516582DFD7137006BDE9F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA6516592DFD7140006BDE9F /* TrendingMovies.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FAA958522DBEB31D007F9E12 = {
 			isa = PBXGroup;
 			children = (
-				FAA9585D2DBEB31D007F9E12 /* StreamFlix */,
+				FAEE31CD2DF988F000E9381E /* StreamFlix */,
 				FAA958772DBEB31E007F9E12 /* StreamFlixTests */,
 				FAA958812DBEB31E007F9E12 /* StreamFlixUITests */,
 				FAA9585C2DBEB31D007F9E12 /* Products */,
@@ -105,6 +139,106 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FAEE31B22DF988F000E9381E /* CommingSoonViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE31B02DF988F000E9381E /* CommingSoonViewController.swift */,
+				FAEE31B12DF988F000E9381E /* CommingSoonViewController.xib */,
+			);
+			path = CommingSoonViewController;
+			sourceTree = "<group>";
+		};
+		FAEE31B52DF988F000E9381E /* DownloadsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE31B32DF988F000E9381E /* DownloadsViewController.swift */,
+				FAEE31B42DF988F000E9381E /* DownloadsViewController.xib */,
+			);
+			path = DownloadsViewController;
+			sourceTree = "<group>";
+		};
+		FAEE31B82DF988F000E9381E /* RandomMoviePreviewView */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE31B62DF988F000E9381E /* RandomMoviePreviewView.swift */,
+				FAEE31B72DF988F000E9381E /* RandomMoviePreviewView.xib */,
+			);
+			path = RandomMoviePreviewView;
+			sourceTree = "<group>";
+		};
+		FAEE31B92DF988F000E9381E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE31B82DF988F000E9381E /* RandomMoviePreviewView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FAEE31BC2DF988F000E9381E /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE31B92DF988F000E9381E /* Views */,
+				FAEE31BA2DF988F000E9381E /* HomeViewController.swift */,
+				FAEE31BB2DF988F000E9381E /* HomeViewController.xib */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		FAEE31BF2DF988F000E9381E /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE31BD2DF988F000E9381E /* SearchViewController.swift */,
+				FAEE31BE2DF988F000E9381E /* SearchViewController.xib */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		FAEE31C02DF988F000E9381E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE31B22DF988F000E9381E /* CommingSoonViewController */,
+				FAEE31B52DF988F000E9381E /* DownloadsViewController */,
+				FAEE31BC2DF988F000E9381E /* HomeViewController */,
+				FAEE31BF2DF988F000E9381E /* SearchViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FAEE31C22DF988F000E9381E /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE31C02DF988F000E9381E /* ViewControllers */,
+				FAEE31C12DF988F000E9381E /* TabBarController.swift */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		FAEE31CD2DF988F000E9381E /* StreamFlix */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE31E22DF988FB00E9381E /* DataLayer */,
+				FAEE31C22DF988F000E9381E /* PresentationLayer */,
+				FAEE31C32DF988F000E9381E /* AppDelegate.swift */,
+				FAEE31C42DF988F000E9381E /* Assets.xcassets */,
+				FAEE31C52DF988F000E9381E /* Info.plist */,
+				FAEE31C72DF988F000E9381E /* LaunchScreen.storyboard */,
+				FAEE31C92DF988F000E9381E /* Main.storyboard */,
+				FAEE31CA2DF988F000E9381E /* SceneDelegate.swift */,
+				FAEE31CB2DF988F000E9381E /* StreamFlix.xcdatamodeld */,
+				FAEE31CC2DF988F000E9381E /* ViewController.swift */,
+			);
+			path = StreamFlix;
+			sourceTree = "<group>";
+		};
+		FAEE31E22DF988FB00E9381E /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				FA6516582DFD7137006BDE9F /* Models */,
+				FAEE31E32DF9890600E9381E /* APICaller.swift */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +253,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				FAA9585D2DBEB31D007F9E12 /* StreamFlix */,
 			);
 			name = StreamFlix;
 			packageProductDependencies = (
@@ -225,6 +356,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAEE31D92DF988F000E9381E /* CommingSoonViewController.xib in Resources */,
+				FAEE31DA2DF988F000E9381E /* DownloadsViewController.xib in Resources */,
+				FAEE31DB2DF988F000E9381E /* RandomMoviePreviewView.xib in Resources */,
+				FAEE31DC2DF988F000E9381E /* HomeViewController.xib in Resources */,
+				FAEE31DD2DF988F000E9381E /* SearchViewController.xib in Resources */,
+				FAEE31DE2DF988F000E9381E /* Assets.xcassets in Resources */,
+				FAEE31E02DF988F000E9381E /* LaunchScreen.storyboard in Resources */,
+				FAEE31E12DF988F000E9381E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +388,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAEE31CF2DF988F000E9381E /* CommingSoonViewController.swift in Sources */,
+				FA65165A2DFD7148006BDE9F /* TrendingMovies.swift in Sources */,
+				FAEE31D02DF988F000E9381E /* DownloadsViewController.swift in Sources */,
+				FAEE31D12DF988F000E9381E /* RandomMoviePreviewView.swift in Sources */,
+				FAEE31D22DF988F000E9381E /* HomeViewController.swift in Sources */,
+				FAEE31D32DF988F000E9381E /* SearchViewController.swift in Sources */,
+				FAEE31D42DF988F000E9381E /* TabBarController.swift in Sources */,
+				FAEE31D52DF988F000E9381E /* AppDelegate.swift in Sources */,
+				FAEE31D62DF988F000E9381E /* SceneDelegate.swift in Sources */,
+				FAEE31E42DF9890B00E9381E /* APICaller.swift in Sources */,
+				FAEE31D72DF988F000E9381E /* StreamFlix.xcdatamodeld in Sources */,
+				FAEE31D82DF988F000E9381E /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +431,25 @@
 			targetProxy = FAA9587F2DBEB31E007F9E12 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FAEE31C72DF988F000E9381E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAEE31C62DF988F000E9381E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FAEE31C92DF988F000E9381E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAEE31C82DF988F000E9381E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FAA958882DBEB31E007F9E12 /* Debug */ = {
@@ -563,6 +733,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FAEE31CB2DF988F000E9381E /* StreamFlix.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAEE31CE2DF988F000E9381E /* StreamFlix.xcdatamodel */,
+			);
+			currentVersion = FAEE31CE2DF988F000E9381E /* StreamFlix.xcdatamodel */;
+			path = StreamFlix.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FAA958532DBEB31D007F9E12 /* Project object */;
 }
