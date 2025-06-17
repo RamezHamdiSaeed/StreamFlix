@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA65165A2DFD7148006BDE9F /* TrendingMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6516592DFD7140006BDE9F /* TrendingMovies.swift */; };
+		DC8B7B3B2DFEE2B1008FB1B4 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = DC8B7B3A2DFEE2B1008FB1B4 /* netfox */; };
+		DCACA2212DFFEE6F00A9D166 /* CollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCACA2202DFFEE6F00A9D166 /* CollectionViewTableViewCell.xib */; };
+		DCACA2222DFFEE6F00A9D166 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA21F2DFFEE6F00A9D166 /* CollectionViewTableViewCell.swift */; };
+		DCACA22A2DFFFACB00A9D166 /* TitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCACA2292DFFFACB00A9D166 /* TitleCollectionViewCell.xib */; };
+		DCACA22B2DFFFACB00A9D166 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA2282DFFFACB00A9D166 /* TitleCollectionViewCell.swift */; };
+		DCACA22D2DFFFE1500A9D166 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DCACA22C2DFFFE1500A9D166 /* SDWebImage */; };
+		DCACA22F2DFFFE1500A9D166 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DCACA22E2DFFFE1500A9D166 /* SDWebImageMapKit */; };
+		FA65165A2DFD7148006BDE9F /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6516592DFD7140006BDE9F /* Title.swift */; };
 		FAEE31CF2DF988F000E9381E /* CommingSoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31B02DF988F000E9381E /* CommingSoonViewController.swift */; };
 		FAEE31D02DF988F000E9381E /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31B32DF988F000E9381E /* DownloadsViewController.swift */; };
 		FAEE31D12DF988F000E9381E /* RandomMoviePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31B62DF988F000E9381E /* RandomMoviePreviewView.swift */; };
@@ -47,7 +54,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FA6516592DFD7140006BDE9F /* TrendingMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMovies.swift; sourceTree = "<group>"; };
+		DCACA21F2DFFEE6F00A9D166 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		DCACA2202DFFEE6F00A9D166 /* CollectionViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewTableViewCell.xib; sourceTree = "<group>"; };
+		DCACA2282DFFFACB00A9D166 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		DCACA2292DFFFACB00A9D166 /* TitleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleCollectionViewCell.xib; sourceTree = "<group>"; };
+		FA6516592DFD7140006BDE9F /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		FAA9585B2DBEB31D007F9E12 /* StreamFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA958742DBEB31E007F9E12 /* StreamFlixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamFlixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA9587E2DBEB31E007F9E12 /* StreamFlixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamFlixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +102,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCACA22D2DFFFE1500A9D166 /* SDWebImage in Frameworks */,
+				DCACA22F2DFFFE1500A9D166 /* SDWebImageMapKit in Frameworks */,
+				DC8B7B3B2DFEE2B1008FB1B4 /* netfox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,10 +125,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DCACA21E2DFFEE3100A9D166 /* CollectionViewTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DCACA21F2DFFEE6F00A9D166 /* CollectionViewTableViewCell.swift */,
+				DCACA2202DFFEE6F00A9D166 /* CollectionViewTableViewCell.xib */,
+			);
+			path = CollectionViewTableViewCell;
+			sourceTree = "<group>";
+		};
+		DCACA2232DFFFA5200A9D166 /* TitleCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DCACA2282DFFFACB00A9D166 /* TitleCollectionViewCell.swift */,
+				DCACA2292DFFFACB00A9D166 /* TitleCollectionViewCell.xib */,
+			);
+			path = TitleCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		FA6516582DFD7137006BDE9F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FA6516592DFD7140006BDE9F /* TrendingMovies.swift */,
+				FA6516592DFD7140006BDE9F /* Title.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +201,8 @@
 		FAEE31B92DF988F000E9381E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DCACA2232DFFFA5200A9D166 /* TitleCollectionViewCell */,
+				DCACA21E2DFFEE3100A9D166 /* CollectionViewTableViewCell */,
 				FAEE31B82DF988F000E9381E /* RandomMoviePreviewView */,
 			);
 			path = Views;
@@ -256,6 +290,9 @@
 			);
 			name = StreamFlix;
 			packageProductDependencies = (
+				DC8B7B3A2DFEE2B1008FB1B4 /* netfox */,
+				DCACA22C2DFFFE1500A9D166 /* SDWebImage */,
+				DCACA22E2DFFFE1500A9D166 /* SDWebImageMapKit */,
 			);
 			productName = StreamFlix;
 			productReference = FAA9585B2DBEB31D007F9E12 /* StreamFlix.app */;
@@ -339,6 +376,10 @@
 			);
 			mainGroup = FAA958522DBEB31D007F9E12;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DC8B7B382DFEE206008FB1B4 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				DC8B7B392DFEE263008FB1B4 /* XCRemoteSwiftPackageReference "netfox" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FAA9585C2DBEB31D007F9E12 /* Products */;
 			projectDirPath = "";
@@ -357,9 +398,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAEE31D92DF988F000E9381E /* CommingSoonViewController.xib in Resources */,
+				DCACA2212DFFEE6F00A9D166 /* CollectionViewTableViewCell.xib in Resources */,
 				FAEE31DA2DF988F000E9381E /* DownloadsViewController.xib in Resources */,
 				FAEE31DB2DF988F000E9381E /* RandomMoviePreviewView.xib in Resources */,
 				FAEE31DC2DF988F000E9381E /* HomeViewController.xib in Resources */,
+				DCACA22A2DFFFACB00A9D166 /* TitleCollectionViewCell.xib in Resources */,
 				FAEE31DD2DF988F000E9381E /* SearchViewController.xib in Resources */,
 				FAEE31DE2DF988F000E9381E /* Assets.xcassets in Resources */,
 				FAEE31E02DF988F000E9381E /* LaunchScreen.storyboard in Resources */,
@@ -389,11 +432,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAEE31CF2DF988F000E9381E /* CommingSoonViewController.swift in Sources */,
-				FA65165A2DFD7148006BDE9F /* TrendingMovies.swift in Sources */,
+				FA65165A2DFD7148006BDE9F /* Title.swift in Sources */,
 				FAEE31D02DF988F000E9381E /* DownloadsViewController.swift in Sources */,
 				FAEE31D12DF988F000E9381E /* RandomMoviePreviewView.swift in Sources */,
 				FAEE31D22DF988F000E9381E /* HomeViewController.swift in Sources */,
+				DCACA2222DFFEE6F00A9D166 /* CollectionViewTableViewCell.swift in Sources */,
 				FAEE31D32DF988F000E9381E /* SearchViewController.swift in Sources */,
+				DCACA22B2DFFFACB00A9D166 /* TitleCollectionViewCell.swift in Sources */,
 				FAEE31D42DF988F000E9381E /* TabBarController.swift in Sources */,
 				FAEE31D52DF988F000E9381E /* AppDelegate.swift in Sources */,
 				FAEE31D62DF988F000E9381E /* SceneDelegate.swift in Sources */,
@@ -733,6 +778,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DC8B7B382DFEE206008FB1B4 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.1;
+			};
+		};
+		DC8B7B392DFEE263008FB1B4 /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC8B7B3A2DFEE2B1008FB1B4 /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC8B7B392DFEE263008FB1B4 /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
+		};
+		DCACA22C2DFFFE1500A9D166 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC8B7B382DFEE206008FB1B4 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		DCACA22E2DFFFE1500A9D166 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC8B7B382DFEE206008FB1B4 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		FAEE31CB2DF988F000E9381E /* StreamFlix.xcdatamodeld */ = {

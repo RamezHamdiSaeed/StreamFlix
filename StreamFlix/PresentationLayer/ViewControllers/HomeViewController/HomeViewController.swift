@@ -19,20 +19,21 @@ enum Sections: String, CaseIterable {
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    let sections: [Sections] = Sections.allCases
+    let sections: [String] = Sections.allCases.map{ $0.rawValue }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
         self.configureNavBar()
-        APICaller.shared.getTrendingMovies(completion: { [weak self] trendingMoviesResponse in
-            print(trendingMoviesResponse)
-        })
     }
     func setupUI() {
         self.setupTableViewHeader()
+         self.setupTableView()
     }
 
+    func setupTableView(){
+        self.tableView.register(UINib(nibName: CollectionViewTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
+    }
     func setupTableViewHeader() {
         self.tableView.tableHeaderView = RandomMoviePreviewView.loadViewFromNib()
         guard let header = self.tableView.tableHeaderView as? RandomMoviePreviewView? else {return}
@@ -60,17 +61,32 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier) as? CollectionViewTableViewCell {
+            APICaller.shared.getTrendingMovies(completion: { [weak self] result in
+                switch result {
+                case .success(let trendingTitlesResponse):
+                    cell.configure(with: trendingTitlesResponse.results)
+                case .failure(let error):
+                    print("error fetching trending movies: \(error.localizedDescription)")
+                }
+            })
+            return cell
+        }
+        return UITableViewCell()
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         5
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        sections[section].rawValue
+        "Trending Movies"
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        200
     }
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
         header.textLabel?.textColor = .label
+        header.textLabel?.text = sections[section]
         header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         header.frame = .init(x: view.bounds.origin.x + 20, y: view.bounds.origin.y, width: view.bounds.width, height: view.bounds.height)
     }

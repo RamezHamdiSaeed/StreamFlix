@@ -16,7 +16,7 @@ final class APICaller {
     static let shared = APICaller()
     private init() {}
 
-    func getTrendingMovies(completion: @escaping ((Result<TrendingMovies, APIError>) -> Void)) {
+    func getTrendingMovies(completion: @escaping ((Result<Title, APIError>) -> Void)) {
         let urlString = "\(Constants.baseURL)/3/trending/movie/day?api_key=\(Constants.apiKey)"
         guard let url = URL(string: urlString) else {
             completion(.failure(.invalidURL))
@@ -37,14 +37,9 @@ final class APICaller {
                 completion(.failure(.noData))
                 return
             }
-
-            // Debug raw JSON
-            if let jsonString = String(data: data, encoding: .utf8) {
-            }
-
             // Decode JSON
             do {
-                let trendingMovies = try JSONDecoder().decode(TrendingMovies.self, from: data)
+                let trendingMovies = try JSONDecoder().decode(Title.self, from: data)
                 completion(.success(trendingMovies))
             } catch {
                 completion(.failure(.decoding(error)))
