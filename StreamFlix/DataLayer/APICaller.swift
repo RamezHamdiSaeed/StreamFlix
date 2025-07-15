@@ -48,4 +48,20 @@ final class APICaller {
         
         task.resume()
     }
+    
+    func networkRequest<T>(url: String, method: HTTPMethod = .GET, headers: [String: String]?, body: [String: String], completion: @escaping ((Result<T, APIError>) -> Void)) {
+        
+        guard let url = URL(string: url) else { return completion(.failure(.invalidURL))}
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.allHTTPHeaderFields = headers
+        
+    }
+    
+    enum HTTPMethod: String {
+        case GET
+        case POST
+        case PUT
+        case DELETE
+    }
 }
