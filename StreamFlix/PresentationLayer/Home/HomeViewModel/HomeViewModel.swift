@@ -10,9 +10,11 @@ class HomeViewModel {
     let getPopularMoviesUseCase: GetPopularMoviesUseCase
     let getPopularMoviesObservable: Observable<Result<Title, APIError>> = .init(value: .success(Title(page: 1, results: [])))
     var popularMovies: Title?
+    var coordinator: BaseCoordinator
     
-    init(getPopularMoviesUseCase: GetPopularMoviesUseCase = GetPopularMoviesUseCaseImpl()) {
+    init(getPopularMoviesUseCase: GetPopularMoviesUseCase = GetPopularMoviesUseCaseImpl(), coordinator: HomeViewCoordinator) {
         self.getPopularMoviesUseCase = getPopularMoviesUseCase
+        self.coordinator = coordinator
     }
     
     func fetchPopularMovies() {

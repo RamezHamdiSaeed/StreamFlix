@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DownloadsViewController: UIViewController {
+class FavouritsViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

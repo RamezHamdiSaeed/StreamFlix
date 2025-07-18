@@ -8,9 +8,11 @@
 import UIKit
 
 class CollectionViewTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var collectionView: UICollectionView!
     static let identifier = "CollectionViewTableViewCell"
     var movies = [Movie]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupUI()

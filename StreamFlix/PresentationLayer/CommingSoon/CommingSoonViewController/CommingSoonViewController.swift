@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CommingSoonViewController: UIViewController {
+class CommingSoonViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

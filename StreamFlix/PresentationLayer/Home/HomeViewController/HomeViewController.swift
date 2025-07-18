@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 enum Sections: String, CaseIterable {
     case TrendingMovies = "Trending Movies"
@@ -16,10 +15,10 @@ enum Sections: String, CaseIterable {
     case TopRated = "Top Rated"
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    let viewModel: HomeViewModel = .init()
+    var viewModel: HomeViewModel?
     
     let sections: [String] = Sections.allCases.map{ $0.rawValue }
     
@@ -28,7 +27,7 @@ class HomeViewController: UIViewController {
         self.setupUI()
         self.setupBinding()
         self.configureNavBar()
-        self.viewModel.fetchPopularMovies()
+        self.viewModel?.fetchPopularMovies()
     }
     
     func setupUI() {
@@ -37,10 +36,10 @@ class HomeViewController: UIViewController {
     }
     
     func setupBinding() {
-        self.viewModel.getPopularMoviesObservable.addObserver(isFiringNow: false) { [weak self] result in
+        self.viewModel?.getPopularMoviesObservable.addObserver(isFiringNow: false) { [weak self] result in
             switch result {
             case .success(let trendingTitlesResponse):
-                self?.viewModel.popularMovies = trendingTitlesResponse
+                self?.viewModel?.popularMovies = trendingTitlesResponse
                 self?.tableView.reloadData()
             case .failure(let error):
                 print("error fetching trending movies: \(error.localizedDescription)")
@@ -79,19 +78,19 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier) as? CollectionViewTableViewCell {
-            cell.configure(with: self.viewModel.popularMovies?.results ?? [])
+            cell.configure(with: self.viewModel?.popularMovies?.results ?? [])
             return cell
         }
         return UITableViewCell()
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        5
+        Sections.allCases.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "Trending Movies"
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
+        UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
@@ -108,25 +107,5 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
 }
-
-//struct HomeViewControllerRepresentable: UIViewControllerRepresentable {
-//    
-//    typealias UIViewControllerType = HomeViewController
-//    
-//    func makeUIViewController(context: Context) -> HomeViewController {
-//        return HomeViewController()
-//    }
-//    
-//    func updateUIViewController(_ uiViewController: HomeViewController, context: Context) {
-//        
-//    }
-//    
-//}
-//
-//struct HomeViewControllerPreviewViewRepresentable_Preview: PreviewProvider {
-//    static var previews: some View {
-//        HomeViewControllerRepresentable()
-//    }
-//}
 
 

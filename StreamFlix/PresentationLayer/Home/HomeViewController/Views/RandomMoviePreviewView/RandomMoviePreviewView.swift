@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class RandomMoviePreviewView: UIView {
     @IBOutlet weak var movieImageView: UIImageView!
@@ -50,36 +49,16 @@ class RandomMoviePreviewView: UIView {
     
 }
 
-//class PreviewViewController : UIViewController {
-//    private var viewPreview: RandomMoviePreviewView = {
-//        return RandomMoviePreviewView(frame: .zero)
-//    }()
-//    
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        viewPreview.frame = view.frame
-//        viewPreview = RandomMoviePreviewView.loadViewFromNib()
-//        view.addSubview(viewPreview)
-//    }
-//    
-//}
-//
-//struct RandomMoviePreviewViewRepresentable: UIViewControllerRepresentable {
-//    
-//    typealias UIViewControllerType = PreviewViewController
-//
-//    func makeUIViewController(context: Context) -> PreviewViewController {
-//        return PreviewViewController()
-//    }
-//    
-//    func updateUIViewController(_ uiViewController: PreviewViewController, context: Context) {
-//        
-//    }
-//        
-//}
-//
-//struct RandomMoviePreviewViewRepresentable_Preview: PreviewProvider {
-//    static var previews: some View {
-//        RandomMoviePreviewViewRepresentable()
-//    }
-//}
+class PreviewViewController : UIViewController {
+    private var viewPreview: RandomMoviePreviewView = {
+        return RandomMoviePreviewView(frame: .zero)
+    }()
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        viewPreview.frame = view.frame
+        viewPreview = RandomMoviePreviewView.loadViewFromNib()
+        view.addSubview(viewPreview)
+    }
+    
+}
