@@ -20,15 +20,19 @@ class HomeViewController: BaseViewController {
         self.setupBinding()
         self.viewModel?.buildViewModels()
         self.configureNavBar()
+        self.viewModel?.getTrendingMovies()
+        self.viewModel?.getTrendingTV()
+        self.viewModel?.getPopularMovies()
+        self.viewModel?.getUpcomingMovies()
+        self.viewModel?.getTopRatedMovies()
     }
     
     func setupUI() {
-        self.setupTableViewHeader()
          self.setupTableView()
     }
     
     func setupBinding() {
-        self.viewModel?.isLoading.addObserver(isFiringNow: false) { [weak self] sectionsViewModels in
+        self.viewModel?.sectionViewModels.addObserver(isFiringNow: false) { [weak self] sectionsViewModels in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
@@ -36,14 +40,8 @@ class HomeViewController: BaseViewController {
     }
 
     func setupTableView(){
+        self.tableView.register(UINib(nibName: RandomMoviePreviewViewCell.identifier, bundle: nil), forCellReuseIdentifier: RandomMoviePreviewViewCell.identifier)
         self.tableView.register(UINib(nibName: CollectionViewTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
-    }
-    
-    func setupTableViewHeader() {
-        self.tableView.tableHeaderView = RandomMoviePreviewView.loadViewFromNib()
-        guard let header = self.tableView.tableHeaderView as? RandomMoviePreviewView? else {return}
-        header?.movieImageView.image = UIImage(named: "movieThumbnail", in: nil, with: .none)
-        
     }
 
     func configureNavBar() {
@@ -75,6 +73,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return UITableViewCell()
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         self.viewModel?.sectionViewModels.value.count ?? 0
     }

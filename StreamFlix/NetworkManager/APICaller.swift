@@ -1,8 +1,8 @@
 import Foundation
 
 struct Constants {
-//    static let baseURL = "https://api.themoviedb.org"
-    static let baseURL = "http://localhost:3000"
+    static let baseURL = "https://api.themoviedb.org"
+//    static let baseURL = "http://localhost:3000"
     static let apiKey = "10fc40366bdcc12b9f404656f2c75161"
     static let imageBaseURL = "https://image.tmdb.org/t/p/w500"
 }

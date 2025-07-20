@@ -8,9 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RandomMoviePreviewView" customModule="StreamFlix" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="545" id="KGk-i7-Jjw" customClass="RandomMoviePreviewView" customModule="StreamFlix" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="545" id="KGk-i7-Jjw" customClass="RandomMoviePreviewViewCell" customModule="StreamFlix" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="407" height="500"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -44,7 +44,7 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Download"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Favourit"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -70,14 +70,15 @@
                     <constraint firstItem="kFW-F5-Iwb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="J2y-VS-X1J"/>
                     <constraint firstAttribute="bottom" secondItem="kFW-F5-Iwb" secondAttribute="bottom" id="Uj3-Kk-ViP"/>
                     <constraint firstItem="kFW-F5-Iwb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ezp-ta-GfN"/>
+                    <constraint firstItem="kFW-F5-Iwb" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="vBo-05-pgD"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="gradiantLayerView" destination="WrK-pe-H0a" id="ikB-iT-SFE"/>
-                <outlet property="movieDownlaodButton" destination="7XG-bh-wLg" id="EG7-hE-5dS"/>
-                <outlet property="movieImageView" destination="QRg-3Q-S3Q" id="uYu-kY-S1M"/>
-                <outlet property="moviePlayButton" destination="4aY-bM-s15" id="8mu-vR-e0w"/>
+                <outlet property="gradiantLayerView" destination="WrK-pe-H0a" id="unl-vh-IoP"/>
+                <outlet property="movieFavouritButton" destination="7XG-bh-wLg" id="MqP-cv-03s"/>
+                <outlet property="movieImageView" destination="QRg-3Q-S3Q" id="v82-cV-ICY"/>
+                <outlet property="moviePlayButton" destination="4aY-bM-s15" id="8ex-vX-Z2r"/>
             </connections>
             <point key="canvasLocation" x="-202.29007633587784" y="-16.549295774647888"/>
         </tableViewCell>

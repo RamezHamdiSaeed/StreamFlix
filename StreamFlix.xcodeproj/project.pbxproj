@@ -13,6 +13,7 @@
 		DCACA22A2DFFFACB00A9D166 /* TitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCACA2292DFFFACB00A9D166 /* TitleCollectionViewCell.xib */; };
 		DCACA22B2DFFFACB00A9D166 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACA2282DFFFACB00A9D166 /* TitleCollectionViewCell.swift */; };
 		DCACA22D2DFFFE1500A9D166 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DCACA22C2DFFFE1500A9D166 /* SDWebImage */; };
+		FA63AFF62E2D682600F693CC /* RandomMoviePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63AFF52E2D682000F693CC /* RandomMoviePreviewViewModel.swift */; };
 		FA65165A2DFD7148006BDE9F /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6516592DFD7140006BDE9F /* Title.swift */; };
 		FAB56A7C2E2CCE060010B780 /* GetUpcommingMoviesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB56A7B2E2CCDFE0010B780 /* GetUpcommingMoviesRequest.swift */; };
 		FAB56A7E2E2CCF470010B780 /* GetPopularMoviesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB56A7D2E2CCF3E0010B780 /* GetPopularMoviesRequest.swift */; };
@@ -45,7 +46,7 @@
 		FAE518BB2E29451D005F7253 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE518BA2E294518005F7253 /* Observable.swift */; };
 		FAEE31CF2DF988F000E9381E /* CommingSoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31B02DF988F000E9381E /* CommingSoonViewController.swift */; };
 		FAEE31D02DF988F000E9381E /* FavouritsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31B32DF988F000E9381E /* FavouritsViewController.swift */; };
-		FAEE31D12DF988F000E9381E /* RandomMoviePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31B62DF988F000E9381E /* RandomMoviePreviewView.swift */; };
+		FAEE31D12DF988F000E9381E /* RandomMoviePreviewViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31B62DF988F000E9381E /* RandomMoviePreviewViewCell.swift */; };
 		FAEE31D22DF988F000E9381E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31BA2DF988F000E9381E /* HomeViewController.swift */; };
 		FAEE31D32DF988F000E9381E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31BD2DF988F000E9381E /* SearchViewController.swift */; };
 		FAEE31D42DF988F000E9381E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31C12DF988F000E9381E /* TabBarController.swift */; };
@@ -55,7 +56,7 @@
 		FAEE31D82DF988F000E9381E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE31CC2DF988F000E9381E /* ViewController.swift */; };
 		FAEE31D92DF988F000E9381E /* CommingSoonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31B12DF988F000E9381E /* CommingSoonViewController.xib */; };
 		FAEE31DA2DF988F000E9381E /* FavouritsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31B42DF988F000E9381E /* FavouritsViewController.xib */; };
-		FAEE31DB2DF988F000E9381E /* RandomMoviePreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31B72DF988F000E9381E /* RandomMoviePreviewView.xib */; };
+		FAEE31DB2DF988F000E9381E /* RandomMoviePreviewViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31B72DF988F000E9381E /* RandomMoviePreviewViewCell.xib */; };
 		FAEE31DC2DF988F000E9381E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31BB2DF988F000E9381E /* HomeViewController.xib */; };
 		FAEE31DD2DF988F000E9381E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31BE2DF988F000E9381E /* SearchViewController.xib */; };
 		FAEE31DE2DF988F000E9381E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAEE31C42DF988F000E9381E /* Assets.xcassets */; };
@@ -86,6 +87,7 @@
 		DCACA2202DFFEE6F00A9D166 /* CollectionViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewTableViewCell.xib; sourceTree = "<group>"; };
 		DCACA2282DFFFACB00A9D166 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		DCACA2292DFFFACB00A9D166 /* TitleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleCollectionViewCell.xib; sourceTree = "<group>"; };
+		FA63AFF52E2D682000F693CC /* RandomMoviePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMoviePreviewViewModel.swift; sourceTree = "<group>"; };
 		FA6516592DFD7140006BDE9F /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		FAA9585B2DBEB31D007F9E12 /* StreamFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA958742DBEB31E007F9E12 /* StreamFlixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamFlixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,8 +125,8 @@
 		FAEE31B12DF988F000E9381E /* CommingSoonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommingSoonViewController.xib; sourceTree = "<group>"; };
 		FAEE31B32DF988F000E9381E /* FavouritsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritsViewController.swift; sourceTree = "<group>"; };
 		FAEE31B42DF988F000E9381E /* FavouritsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritsViewController.xib; sourceTree = "<group>"; };
-		FAEE31B62DF988F000E9381E /* RandomMoviePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMoviePreviewView.swift; sourceTree = "<group>"; };
-		FAEE31B72DF988F000E9381E /* RandomMoviePreviewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RandomMoviePreviewView.xib; sourceTree = "<group>"; };
+		FAEE31B62DF988F000E9381E /* RandomMoviePreviewViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMoviePreviewViewCell.swift; sourceTree = "<group>"; };
+		FAEE31B72DF988F000E9381E /* RandomMoviePreviewViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RandomMoviePreviewViewCell.xib; sourceTree = "<group>"; };
 		FAEE31BA2DF988F000E9381E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FAEE31BB2DF988F000E9381E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		FAEE31BD2DF988F000E9381E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -440,8 +442,9 @@
 		FAEE31B82DF988F000E9381E /* RandomMoviePreviewView */ = {
 			isa = PBXGroup;
 			children = (
-				FAEE31B62DF988F000E9381E /* RandomMoviePreviewView.swift */,
-				FAEE31B72DF988F000E9381E /* RandomMoviePreviewView.xib */,
+				FA63AFF52E2D682000F693CC /* RandomMoviePreviewViewModel.swift */,
+				FAEE31B62DF988F000E9381E /* RandomMoviePreviewViewCell.swift */,
+				FAEE31B72DF988F000E9381E /* RandomMoviePreviewViewCell.xib */,
 			);
 			path = RandomMoviePreviewView;
 			sourceTree = "<group>";
@@ -644,7 +647,7 @@
 				FAEE31D92DF988F000E9381E /* CommingSoonViewController.xib in Resources */,
 				DCACA2212DFFEE6F00A9D166 /* CollectionViewTableViewCell.xib in Resources */,
 				FAEE31DA2DF988F000E9381E /* FavouritsViewController.xib in Resources */,
-				FAEE31DB2DF988F000E9381E /* RandomMoviePreviewView.xib in Resources */,
+				FAEE31DB2DF988F000E9381E /* RandomMoviePreviewViewCell.xib in Resources */,
 				FAEE31DC2DF988F000E9381E /* HomeViewController.xib in Resources */,
 				DCACA22A2DFFFACB00A9D166 /* TitleCollectionViewCell.xib in Resources */,
 				FAEE31DD2DF988F000E9381E /* SearchViewController.xib in Resources */,
@@ -688,7 +691,7 @@
 				FAB56A802E2CD0210010B780 /* GetTopRatedMoviesRequest.swift in Sources */,
 				FABDB51E2E2C1125004F5C53 /* GetTrendingTVRequest.swift in Sources */,
 				FAB56A862E2CD22C0010B780 /* GetTopRatedMoviesUseCase.swift in Sources */,
-				FAEE31D12DF988F000E9381E /* RandomMoviePreviewView.swift in Sources */,
+				FAEE31D12DF988F000E9381E /* RandomMoviePreviewViewCell.swift in Sources */,
 				FABDB5112E2B8707004F5C53 /* ViewCell.swift in Sources */,
 				FAB5A04D2E2A653200E766EF /* BaseViewModel.swift in Sources */,
 				FAEE31D22DF988F000E9381E /* HomeViewController.swift in Sources */,
@@ -696,6 +699,7 @@
 				FABDB51A2E2B892B004F5C53 /* CollectionViewTableViewModel.swift in Sources */,
 				FAEE31D32DF988F000E9381E /* SearchViewController.swift in Sources */,
 				FAB5A05C2E2A8C4D00E766EF /* SearchViewCoordinator.swift in Sources */,
+				FA63AFF62E2D682600F693CC /* RandomMoviePreviewViewModel.swift in Sources */,
 				FAB5A0592E2A89B600E766EF /* CommingSoonViewCoordinator.swift in Sources */,
 				FAD6EDB52E28EBB100D65744 /* GetTrendingMoviesRequest.swift in Sources */,
 				DCACA22B2DFFFACB00A9D166 /* TitleCollectionViewCell.swift in Sources */,

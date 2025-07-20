@@ -14,18 +14,12 @@ class HomeViewModel {
     let topRatedMoviesUseCase: GetTopRatedMoviesUseCase
     
     let sectionViewModels: Observable<[SectionViewModel]> = Observable(value: [])
-    let isLoading: Observable<Bool> = Observable(value: false)
 
     var trendingMovies: [Movie] = []
-    var isTrendingMoviesRequestLoading = false
     var trendingTV: [Movie] = []
-    var isTrendingTVRequestLoading = false
-    var popular: [Movie] = []
-    var isPopularRequestLoading = false
-    var upcoming: [Movie] = []
-    var isUpcomingRequestLoading = false
-    var topRated: [Movie] = []
-    var isTopRatedRequestLoading = false
+    var popularMovies: [Movie] = []
+    var upcomingMovies: [Movie] = []
+    var topRatedMovies: [Movie] = []
     
     var coordinator: BaseCoordinator
     
@@ -42,14 +36,34 @@ class HomeViewModel {
         
         var sectionViewModels = [SectionViewModel]()
         
-            sectionViewModels.append(self.trendingMoviesRowSectionViewModel(movies: trendingMovies))
-            sectionViewModels.append(self.trendingTVRowSectionViewModel(movies: trendingTV))
-            sectionViewModels.append(self.popularRowSectionViewModel(movies: popular))
-            sectionViewModels.append(self.upcomingRowSectionViewModel(movies: upcoming))
-            sectionViewModels.append(self.topRatedRowSectionViewModel(movies: topRated))
+        sectionViewModels.append(self.randomMoviePreviewRowSectionViewModel(movie: trendingMovies.randomElement() ?? Movie(backdropPath: nil, id: nil, title: nil, originalTitle: nil, overview: nil, posterPath: nil, mediaType: nil, adult: nil, originalLanguage: nil, genreIds: nil, popularity: nil, releaseDate: nil, video: nil, voteAverage: nil, voteCount: nil)))
+        
+        sectionViewModels.append(self.trendingMoviesRowSectionViewModel(movies: trendingMovies))
+        sectionViewModels.append(self.trendingTVRowSectionViewModel(movies: trendingTV))
+        sectionViewModels.append(self.popularRowSectionViewModel(movies: popularMovies))
+        sectionViewModels.append(self.upcomingRowSectionViewModel(movies: upcomingMovies))
+        sectionViewModels.append(self.topRatedRowSectionViewModel(movies: topRatedMovies))
         
         
         self.sectionViewModels.value = sectionViewModels
+    }
+    
+    // MARK: RandomMoviePreviewRowSectionViewModel
+    
+    func randomMoviePreviewRowSectionViewModel(movie: Movie) -> SectionViewModel {
+
+        let RandomMoviePreviewRowSectionModel = SectionModel(headerTitle: "", headerHeight: 0)
+        
+        var RandomMoviePreviewRowViewModels: [RowViewModel] = []
+        
+        RandomMoviePreviewRowViewModels.append(self.getRandomMoviePreviewRowViewModel(movie: movie))
+        
+        let tRandomMoviePreviewRowSectionViewModel = SectionViewModel(sectionModel: RandomMoviePreviewRowSectionModel, rowViewModels: RandomMoviePreviewRowViewModels)
+        return tRandomMoviePreviewRowSectionViewModel
+    }
+    
+    func getRandomMoviePreviewRowViewModel(movie: Movie) -> RowViewModel {
+        RandomMoviePreviewViewModel(randomMovie: movie)
     }
     
     //MARK: TrendingMovies Section
@@ -67,12 +81,7 @@ class HomeViewModel {
     }
     
     func getTrendingMoviesRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies, getMoviesUseCase: self.getTrendingMoviesUseCase as! UseCase<Title>, isLoading: self.isTrendingMoviesRequestLoading){ [weak self] title in
-            self?.trendingMovies = title.results
-            self?.buildViewModels()
-        } updateLoadingStatus: { [weak self] isLoading in
-            self?.isTrendingMoviesRequestLoading = isLoading
-        }
+        CollectionViewTableViewCellViewModel(movies: movies)
     }
     
     //MARK: TrendingTV Section
@@ -89,12 +98,7 @@ class HomeViewModel {
     }
     
     func getTrendingTVRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies, getMoviesUseCase: self.getTrendingTVUseCase as! UseCase<Title>, isLoading: self.isTrendingTVRequestLoading) { [weak self] title in
-            self?.trendingTV = title.results
-            self?.buildViewModels()
-        } updateLoadingStatus: { [weak self] isLoading in
-            self?.isTrendingTVRequestLoading = isLoading
-        }
+        CollectionViewTableViewCellViewModel(movies: movies)
     }
     
     //MARK: Popular Section
@@ -111,12 +115,7 @@ class HomeViewModel {
     }
     
     func getPopularRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies, getMoviesUseCase: self.getPopularMoviesUseCase as! UseCase<Title>, isLoading: self.isPopularRequestLoading) { [weak self] title in
-            self?.popular = title.results
-            self?.buildViewModels()
-        } updateLoadingStatus: { [weak self] isLoading in
-            self?.isPopularRequestLoading = isLoading
-        }
+        CollectionViewTableViewCellViewModel(movies: movies)
     }
     
     //MARK: UpcomingMovings Section
@@ -133,12 +132,7 @@ class HomeViewModel {
     }
     
     func getUpcomingRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies, getMoviesUseCase: self.getUpcommingMoviesUseCase as! UseCase<Title>, isLoading: self.isUpcomingRequestLoading) { [weak self] title in
-            self?.upcoming = title.results
-            self?.buildViewModels()
-        } updateLoadingStatus: { [weak self] isLoading in
-            self?.isUpcomingRequestLoading = isLoading
-        }
+        CollectionViewTableViewCellViewModel(movies: movies)
     }
     
     //MARK: Top Rated Section
@@ -155,11 +149,69 @@ class HomeViewModel {
     }
     
     func getTopRatedRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies, getMoviesUseCase: self.topRatedMoviesUseCase as! UseCase<Title>, isLoading: self.isTopRatedRequestLoading) { [weak self] title in
-            self?.topRated = title.results
-            self?.buildViewModels()
-        } updateLoadingStatus: { [weak self] isLoading in
-            self?.isTopRatedRequestLoading = isLoading
+        CollectionViewTableViewCellViewModel(movies: movies)
+    }
+}
+
+extension HomeViewModel {
+    func getTrendingMovies() {
+        self.getTrendingMoviesUseCase.getTrendingMovies { [weak self] trendingMovies in
+            switch trendingMovies {
+            case .success(let Title):
+                self?.trendingMovies = Title.results
+                self?.buildViewModels()
+            case .failure(let error):
+                print("Error in fetching trending movies: \(error)")
+            }
+        }
+    }
+    
+    func getTrendingTV() {
+        self.getTrendingTVUseCase.getTrendingTV { [weak self] trendingTV in
+            switch trendingTV {
+            case .success(let Title):
+                self?.trendingTV = Title.results
+                self?.buildViewModels()
+            case .failure(let error):
+                print("Error in fetching trending TV: \(error)")
+            }
+        }
+    }
+    
+    
+    func getPopularMovies() {
+        self.getPopularMoviesUseCase.getPopularMovies { [weak self] popularMovies in
+            switch popularMovies {
+            case .success(let Title):
+                self?.popularMovies = Title.results
+                self?.buildViewModels()
+            case .failure(let error):
+                print("Error in fetching popular movies: \(error)")
+            }
+        }
+    }
+    
+    func getUpcomingMovies() {
+        self.getUpcommingMoviesUseCase.getUpcommingMovies { [weak self] upcomingMovies in
+            switch upcomingMovies {
+            case .success(let Title):
+                self?.upcomingMovies = Title.results
+                self?.buildViewModels()
+            case .failure(let error):
+                print("Error in fetching upcomingMovies: \(error)")
+            }
+        }
+    }
+    
+    func getTopRatedMovies() {
+        self.topRatedMoviesUseCase.getTopRatedMovies { [weak self] topRatedMovies in
+            switch topRatedMovies {
+            case .success(let Title):
+                self?.topRatedMovies = Title.results
+                self?.buildViewModels()
+            case .failure(let error):
+                print("Error in fetching topRatedMovies: \(error)")
+            }
         }
     }
 }
