@@ -8,7 +8,7 @@
 import Foundation
 
 struct Title: Codable {
-    let page: Int
+    let page: Int?
     let results: [Movie]
 }
 

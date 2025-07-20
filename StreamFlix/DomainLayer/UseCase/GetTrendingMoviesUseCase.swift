@@ -1,23 +1,24 @@
 //
-//  GetPopularMoviesUseCase.swift
+//  GetTrendingMoviesUseCase.swift
 //  StreamFlix
 //
-//  Created by Ramez Hamdy on 20/07/2025.
+//  Created by Ramez Hamdy on 19/07/2025.
 //
 
-protocol GetPopularMoviesUseCase {
-    func getPopularMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
+protocol GetTrendingMoviesUseCase {
+    func getTrendingMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
 }
 
-class GetPopularMoviesUseCaseImpl: UseCase<Title>, GetPopularMoviesUseCase {
+class GetTrendingMoviesUseCaseImpl: UseCase<Title>, GetTrendingMoviesUseCase {
+    
     let movieRepository: MovieRepository
     
     init(movieRepository: MovieRepository = MovieRepositoryImpl()) {
         self.movieRepository = movieRepository
     }
-    
-    override func execute(completion: @escaping ((Result<Title, APIError>) -> Void)) {
-        self.getPopularMovies { result in
+
+    override func execute(completion: @escaping (Result<Title, APIError>) -> Void) {
+        self.getTrendingMovies { result in
             switch result {
             case .success(let title):
                 completion(.success(title))
@@ -27,8 +28,8 @@ class GetPopularMoviesUseCaseImpl: UseCase<Title>, GetPopularMoviesUseCase {
         }
     }
     
-    func getPopularMovies(completion: @escaping ((Result<Title, APIError>) -> Void)) {
-        self.movieRepository.getPopularMovies { result in
+    func getTrendingMovies(completion: @escaping ((Result<Title, APIError>) -> Void)) {
+        self.movieRepository.getTrendingMovies { result in
             switch result {
             case .success(let title):
                 completion(.success(title))

@@ -18,5 +18,6 @@ class BaseApiRequest {
     init(baseUrl: String = Constants.baseURL, path: String) {
         self.baseUrl = baseUrl
         self.path = path
+        self.queryItems = [URLQueryItem(name: "api_key", value: Constants.apiKey)]
     }
 }
