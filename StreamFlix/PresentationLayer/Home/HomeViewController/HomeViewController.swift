@@ -55,6 +55,10 @@ class HomeViewController: BaseViewController {
             navigationController?.navigationBar.tintColor = .white
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.transform = .identity
+    }
 
 }
 

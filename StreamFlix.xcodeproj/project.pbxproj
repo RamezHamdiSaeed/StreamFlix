@@ -325,9 +325,9 @@
 		FABA99B62E2FAF21002F03E9 /* DetailsView */ = {
 			isa = PBXGroup;
 			children = (
-				FAD8B8E42E3004EE007D9FFD /* DetailsViewCoordinator */,
-				FAD8B8E52E3004FA007D9FFD /* DetailsViewModel */,
 				FABA99BF2E2FAF94002F03E9 /* DetailsViewController */,
+				FAD8B8E52E3004FA007D9FFD /* DetailsViewModel */,
+				FAD8B8E42E3004EE007D9FFD /* DetailsViewCoordinator */,
 			);
 			path = DetailsView;
 			sourceTree = "<group>";
