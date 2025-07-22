@@ -10,7 +10,7 @@ protocol GetUpcommingMoviesUseCase {
     func getUpcommingMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
 }
 
-class GetUpcommingMoviesUseCaseImpl: UseCase<Title>, GetUpcommingMoviesUseCase {
+class GetUpcommingMoviesUseCaseImpl: UseCase<Title, APIError>, GetUpcommingMoviesUseCase {
     let movieRepository: MovieRepository
     
     init(movieRepository: MovieRepository = MovieRepositoryImpl()) {

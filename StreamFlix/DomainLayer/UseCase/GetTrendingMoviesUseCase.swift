@@ -9,7 +9,7 @@ protocol GetTrendingMoviesUseCase {
     func getTrendingMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
 }
 
-class GetTrendingMoviesUseCaseImpl: UseCase<Title>, GetTrendingMoviesUseCase {
+class GetTrendingMoviesUseCaseImpl: UseCase<Title, APIError>, GetTrendingMoviesUseCase {
     
     let movieRepository: MovieRepository
     

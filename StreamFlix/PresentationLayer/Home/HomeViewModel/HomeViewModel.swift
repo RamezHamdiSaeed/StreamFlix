@@ -21,6 +21,7 @@ class HomeViewModel {
     var upcomingMovies: [Movie] = []
     var topRatedMovies: [Movie] = []
     
+    
     var coordinator: BaseCoordinator
     
     init(getTrendingMoviesUseCase: GetTrendingMoviesUseCase = GetTrendingMoviesUseCaseImpl(), getTrendingTVUseCase: GetTrendingTVUseCase = GetTrendingTVUseCaseImpl(), getPopularMoviesUseCase: GetPopularMoviesUseCase = GetPopularMoviesUseCaseImpl(), getUpcommingMoviesUseCase: GetUpcommingMoviesUseCase = GetUpcommingMoviesUseCaseImpl(), topRatedMoviesUseCase: GetTopRatedMoviesUseCase = GetTopRatedMoviesUseCaseImpl(), coordinator: HomeViewCoordinator) {
@@ -81,7 +82,12 @@ class HomeViewModel {
     }
     
     func getTrendingMoviesRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies)
+        CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
+            if let coordinator = self?.coordinator as? HomeViewCoordinator {
+                coordinator.navToVC(presentType: .fullScreen , distination: .movieDetails(movie, .fullScreen))
+            }
+        }
+        
     }
     
     //MARK: TrendingTV Section
@@ -98,7 +104,11 @@ class HomeViewModel {
     }
     
     func getTrendingTVRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies)
+        CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
+            if let coordinator = self?.coordinator as? HomeViewCoordinator {
+                coordinator.navToVC(presentType: .fullScreen , distination: .movieDetails(movie, .fullScreen))
+            }
+        }
     }
     
     //MARK: Popular Section
@@ -115,7 +125,11 @@ class HomeViewModel {
     }
     
     func getPopularRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies)
+        CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
+            if let coordinator = self?.coordinator as? HomeViewCoordinator {
+                coordinator.navToVC(presentType: .fullScreen , distination: .movieDetails(movie, .fullScreen))
+            }
+        }
     }
     
     //MARK: UpcomingMovings Section
@@ -132,7 +146,11 @@ class HomeViewModel {
     }
     
     func getUpcomingRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies)
+        CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
+            if let coordinator = self?.coordinator as? HomeViewCoordinator {
+                coordinator.navToVC(presentType: .fullScreen , distination: .movieDetails(movie, .fullScreen))
+            }
+        }
     }
     
     //MARK: Top Rated Section
@@ -149,7 +167,11 @@ class HomeViewModel {
     }
     
     func getTopRatedRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies)
+        CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
+            if let coordinator = self?.coordinator as? HomeViewCoordinator {
+                coordinator.navToVC(presentType: .fullScreen , distination: .movieDetails(movie, .fullScreen))
+            }
+        }
     }
 }
 

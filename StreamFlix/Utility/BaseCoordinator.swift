@@ -9,6 +9,4 @@ import UIKit
 protocol BaseCoordinator {
     var presentType: UIModalPresentationStyle {get set}
     var viewController: UIViewController? {get set}
-    func startVC() -> UIViewController
-    func navToVC(presentType: UIModalPresentationStyle, distination: BaseViewController)
 }

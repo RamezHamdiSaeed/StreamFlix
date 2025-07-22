@@ -22,12 +22,16 @@
 		FAB56A842E2CD21A0010B780 /* GetUpcommingMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB56A832E2CD2040010B780 /* GetUpcommingMoviesUseCase.swift */; };
 		FAB56A862E2CD22C0010B780 /* GetTopRatedMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB56A852E2CD2210010B780 /* GetTopRatedMoviesUseCase.swift */; };
 		FAB5A0472E2A5EE100E766EF /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A0462E2A5EDC00E766EF /* BaseCoordinator.swift */; };
-		FAB5A0492E2A5F1200E766EF /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A0482E2A5F0A00E766EF /* HomeCoordinator.swift */; };
+		FAB5A0492E2A5F1200E766EF /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A0482E2A5F0A00E766EF /* HomeViewCoordinator.swift */; };
 		FAB5A04B2E2A64E700E766EF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A04A2E2A64E000E766EF /* BaseViewController.swift */; };
 		FAB5A04D2E2A653200E766EF /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A04C2E2A652C00E766EF /* BaseViewModel.swift */; };
 		FAB5A0592E2A89B600E766EF /* CommingSoonViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A0582E2A89AF00E766EF /* CommingSoonViewCoordinator.swift */; };
 		FAB5A05C2E2A8C4D00E766EF /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A05B2E2A8C4800E766EF /* SearchViewCoordinator.swift */; };
 		FAB5A05F2E2A8E4700E766EF /* FavouritsViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A05E2E2A8E4600E766EF /* FavouritsViewCoordinator.swift */; };
+		FABA99BC2E2FAF6A002F03E9 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA99BB2E2FAF5D002F03E9 /* DetailsViewModel.swift */; };
+		FABA99BE2E2FAF8D002F03E9 /* DetailsViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA99BD2E2FAF80002F03E9 /* DetailsViewCoordinator.swift */; };
+		FABA99C22E2FB12A002F03E9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA99C02E2FB12A002F03E9 /* DetailsViewController.swift */; };
+		FABA99C32E2FB12A002F03E9 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABA99C12E2FB12A002F03E9 /* DetailsViewController.xib */; };
 		FABDB50F2E2B86BF004F5C53 /* RowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDB50E2E2B86B1004F5C53 /* RowViewModel.swift */; };
 		FABDB5112E2B8707004F5C53 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDB5102E2B86E4004F5C53 /* ViewCell.swift */; };
 		FABDB5132E2B878A004F5C53 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDB5122E2B8784004F5C53 /* SectionViewModel.swift */; };
@@ -99,12 +103,16 @@
 		FAB56A832E2CD2040010B780 /* GetUpcommingMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUpcommingMoviesUseCase.swift; sourceTree = "<group>"; };
 		FAB56A852E2CD2210010B780 /* GetTopRatedMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTopRatedMoviesUseCase.swift; sourceTree = "<group>"; };
 		FAB5A0462E2A5EDC00E766EF /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
-		FAB5A0482E2A5F0A00E766EF /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		FAB5A0482E2A5F0A00E766EF /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
 		FAB5A04A2E2A64E000E766EF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FAB5A04C2E2A652C00E766EF /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		FAB5A0582E2A89AF00E766EF /* CommingSoonViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingSoonViewCoordinator.swift; sourceTree = "<group>"; };
 		FAB5A05B2E2A8C4800E766EF /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
 		FAB5A05E2E2A8E4600E766EF /* FavouritsViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritsViewCoordinator.swift; sourceTree = "<group>"; };
+		FABA99BB2E2FAF5D002F03E9 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		FABA99BD2E2FAF80002F03E9 /* DetailsViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewCoordinator.swift; sourceTree = "<group>"; };
+		FABA99C02E2FB12A002F03E9 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		FABA99C12E2FB12A002F03E9 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		FABDB50E2E2B86B1004F5C53 /* RowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowViewModel.swift; sourceTree = "<group>"; };
 		FABDB5102E2B86E4004F5C53 /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
 		FABDB5122E2B8784004F5C53 /* SectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
@@ -234,7 +242,7 @@
 		FAB5A0452E2A5EC800E766EF /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				FAB5A0482E2A5F0A00E766EF /* HomeCoordinator.swift */,
+				FAB5A0482E2A5F0A00E766EF /* HomeViewCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -314,6 +322,25 @@
 			path = SearchViewModel;
 			sourceTree = "<group>";
 		};
+		FABA99B62E2FAF21002F03E9 /* DetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				FAD8B8E42E3004EE007D9FFD /* DetailsViewCoordinator */,
+				FAD8B8E52E3004FA007D9FFD /* DetailsViewModel */,
+				FABA99BF2E2FAF94002F03E9 /* DetailsViewController */,
+			);
+			path = DetailsView;
+			sourceTree = "<group>";
+		};
+		FABA99BF2E2FAF94002F03E9 /* DetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FABA99C02E2FB12A002F03E9 /* DetailsViewController.swift */,
+				FABA99C12E2FB12A002F03E9 /* DetailsViewController.xib */,
+			);
+			path = DetailsViewController;
+			sourceTree = "<group>";
+		};
 		FAD6EDAF2E28E83300D65744 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +381,22 @@
 				FA6516582DFD7137006BDE9F /* Entity */,
 			);
 			path = DomainLayer;
+			sourceTree = "<group>";
+		};
+		FAD8B8E42E3004EE007D9FFD /* DetailsViewCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				FABA99BD2E2FAF80002F03E9 /* DetailsViewCoordinator.swift */,
+			);
+			path = DetailsViewCoordinator;
+			sourceTree = "<group>";
+		};
+		FAD8B8E52E3004FA007D9FFD /* DetailsViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FABA99BB2E2FAF5D002F03E9 /* DetailsViewModel.swift */,
+			);
+			path = DetailsViewModel;
 			sourceTree = "<group>";
 		};
 		FAE518A92E293352005F7253 /* UseCase */ = {
@@ -481,6 +524,7 @@
 		FAEE31C22DF988F000E9381E /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				FABA99B62E2FAF21002F03E9 /* DetailsView */,
 				FAEE31C12DF988F000E9381E /* TabBarController.swift */,
 				FAE518B42E29400D005F7253 /* Home */,
 				FAB5A04E2E2A767200E766EF /* CommingSoon */,
@@ -649,6 +693,7 @@
 				FAEE31DA2DF988F000E9381E /* FavouritsViewController.xib in Resources */,
 				FAEE31DB2DF988F000E9381E /* RandomMoviePreviewViewCell.xib in Resources */,
 				FAEE31DC2DF988F000E9381E /* HomeViewController.xib in Resources */,
+				FABA99C32E2FB12A002F03E9 /* DetailsViewController.xib in Resources */,
 				DCACA22A2DFFFACB00A9D166 /* TitleCollectionViewCell.xib in Resources */,
 				FAEE31DD2DF988F000E9381E /* SearchViewController.xib in Resources */,
 				FAEE31DE2DF988F000E9381E /* Assets.xcassets in Resources */,
@@ -687,8 +732,9 @@
 				FAEE31D02DF988F000E9381E /* FavouritsViewController.swift in Sources */,
 				FAB56A842E2CD21A0010B780 /* GetUpcommingMoviesUseCase.swift in Sources */,
 				FAB5A05F2E2A8E4700E766EF /* FavouritsViewCoordinator.swift in Sources */,
-				FAB5A0492E2A5F1200E766EF /* HomeCoordinator.swift in Sources */,
+				FAB5A0492E2A5F1200E766EF /* HomeViewCoordinator.swift in Sources */,
 				FAB56A802E2CD0210010B780 /* GetTopRatedMoviesRequest.swift in Sources */,
+				FABA99C22E2FB12A002F03E9 /* DetailsViewController.swift in Sources */,
 				FABDB51E2E2C1125004F5C53 /* GetTrendingTVRequest.swift in Sources */,
 				FAB56A862E2CD22C0010B780 /* GetTopRatedMoviesUseCase.swift in Sources */,
 				FAEE31D12DF988F000E9381E /* RandomMoviePreviewViewCell.swift in Sources */,
@@ -698,6 +744,7 @@
 				DCACA2222DFFEE6F00A9D166 /* CollectionViewTableViewCell.swift in Sources */,
 				FABDB51A2E2B892B004F5C53 /* CollectionViewTableViewModel.swift in Sources */,
 				FAEE31D32DF988F000E9381E /* SearchViewController.swift in Sources */,
+				FABA99BE2E2FAF8D002F03E9 /* DetailsViewCoordinator.swift in Sources */,
 				FAB5A05C2E2A8C4D00E766EF /* SearchViewCoordinator.swift in Sources */,
 				FA63AFF62E2D682600F693CC /* RandomMoviePreviewViewModel.swift in Sources */,
 				FAB5A0592E2A89B600E766EF /* CommingSoonViewCoordinator.swift in Sources */,
@@ -710,6 +757,7 @@
 				FAEE31D42DF988F000E9381E /* TabBarController.swift in Sources */,
 				FAEE31D52DF988F000E9381E /* AppDelegate.swift in Sources */,
 				FAB56A7C2E2CCE060010B780 /* GetUpcommingMoviesRequest.swift in Sources */,
+				FABA99BC2E2FAF6A002F03E9 /* DetailsViewModel.swift in Sources */,
 				FAEE31D62DF988F000E9381E /* SceneDelegate.swift in Sources */,
 				FAB5A0472E2A5EE100E766EF /* BaseCoordinator.swift in Sources */,
 				FAE518B02E29358D005F7253 /* MovieRepositoryImpl.swift in Sources */,

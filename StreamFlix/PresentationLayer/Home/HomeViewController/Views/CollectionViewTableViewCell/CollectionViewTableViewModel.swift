@@ -8,9 +8,11 @@
 class CollectionViewTableViewCellViewModel: RowViewModel {
     let movies: [Movie]
     var sectionViewModels: [SectionViewModel]?
-    
-    init( movies: [Movie]) {
+    var collectionViewCellPressedAction: ((Movie) -> ())?
+
+    init( movies: [Movie], collectionViewCellPressedAction: ((Movie) -> ())? = nil) {
         self.movies = movies
+        self.collectionViewCellPressedAction = collectionViewCellPressedAction
     }
     
     func buildViewModels() {
@@ -25,7 +27,9 @@ class CollectionViewTableViewCellViewModel: RowViewModel {
         var rowViewModels: [RowViewModel] = []
         
         self.movies.forEach {
-            rowViewModels.append(TitleCollectionViewCellViewModel(movie: $0))
+            rowViewModels.append(TitleCollectionViewCellViewModel(movie: $0) { [weak self] movie in
+                self?.collectionViewCellPressedAction?(movie)
+            })
         }
         
         return rowViewModels

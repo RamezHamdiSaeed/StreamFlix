@@ -9,6 +9,6 @@ protocol RowViewModel {
     func cellIdentifier() -> String
 }
 
-protocol ViewModelPressible {
+protocol CellPressible {
     func cellPressed()
 }

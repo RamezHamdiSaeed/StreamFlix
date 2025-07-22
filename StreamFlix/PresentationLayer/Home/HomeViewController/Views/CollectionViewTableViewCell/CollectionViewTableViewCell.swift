@@ -56,7 +56,16 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 100, height: 150)
+        CGSize(width: 120, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let viewModel = self.viewModel as? CollectionViewTableViewCellViewModel {
+            let row = viewModel.sectionViewModels?[indexPath.section].rowViewModels[indexPath.item]
+            if let rowIsPresssible = row as? CellPressible {
+                rowIsPresssible.cellPressed()
+            }
+        }
     }
     
 }
