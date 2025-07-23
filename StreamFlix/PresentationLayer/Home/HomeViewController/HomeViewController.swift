@@ -6,25 +6,26 @@
 //
 
 import UIKit
-
+import Combine
 
 
 class HomeViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var viewModel: HomeViewModel?
-        
+    var cancellables = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
         self.setupBinding()
-        self.viewModel?.buildViewModels()
         self.configureNavBar()
         self.viewModel?.getTrendingMovies()
         self.viewModel?.getTrendingTV()
         self.viewModel?.getPopularMovies()
         self.viewModel?.getUpcomingMovies()
         self.viewModel?.getTopRatedMovies()
+        self.viewModel?.buildViewModels()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,11 +37,11 @@ class HomeViewController: BaseViewController {
     }
     
     func setupBinding() {
-        self.viewModel?.sectionViewModels.addObserver(isFiringNow: false) { [weak self] sectionsViewModels in
-            DispatchQueue.main.async {
+        // here i'm using debounce to prevent many threads in the background changing the Published property (Observable) at the same time so i add at least 500 milli secons between every change of the observable and getting notified here
+        self.viewModel?.$sectionViewModels.dropFirst().debounce(for: .milliseconds(500), scheduler: RunLoop.main).sink { [weak self] sectionViewModels in
                 self?.tableView.reloadData()
-            }
         }
+        .store(in: &cancellables)
     }
 
     func setupTableView(){
@@ -68,11 +69,11 @@ class HomeViewController: BaseViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.viewModel?.sectionViewModels.value[section].rowViewModels.count ?? 0
+        self.viewModel?.sectionViewModels[section].rowViewModels.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = self.viewModel?.sectionViewModels.value[indexPath.section]
+        let section = self.viewModel?.sectionViewModels[indexPath.section]
         let row = section?.rowViewModels[indexPath.row]
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: row?.cellIdentifier() ?? "") as? RowViewCell {
@@ -83,7 +84,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        self.viewModel?.sectionViewModels.value.count ?? 0
+        self.viewModel?.sectionViewModels.count ?? 0
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "Trending Movies"
@@ -93,7 +94,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        let section = self.viewModel?.sectionViewModels.value[section]
+        let section = self.viewModel?.sectionViewModels[section]
         header.textLabel?.textColor = .label
         header.textLabel?.text = section?.sectionModel.headerTitle
         header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)

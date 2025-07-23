@@ -4,6 +4,7 @@
 //
 //  Created by Ramez Hamdy on 17/07/2025.
 //
+import Combine
 
 enum MoviesSection: String {
     case trendingMovies = "Trending Movies"
@@ -21,7 +22,8 @@ class HomeViewModel {
     let getUpcommingMoviesUseCase: GetUpcommingMoviesUseCase
     let topRatedMoviesUseCase: GetTopRatedMoviesUseCase
     
-    let sectionViewModels: Observable<[SectionViewModel]> = Observable(value: [])
+//    let sectionViewModels: Observable<[SectionViewModel]> = Observable(value: [])
+    @Published var sectionViewModels: [SectionViewModel] = []
 
     var trendingMovies: [Movie] = []
     var trendingTV: [Movie] = []
@@ -60,7 +62,7 @@ class HomeViewModel {
         sectionViewModels.append(self.topRatedRowSectionViewModel(movies: topRatedMovies))
         
         
-        self.sectionViewModels.value = sectionViewModels
+        self.sectionViewModels = sectionViewModels
     }
     
     // MARK: RandomMoviePreviewRowSectionViewModel

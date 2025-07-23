@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Combine
 
 class DetailsViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
@@ -19,7 +20,8 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var favoriteUnFavoritButton: UIButton!
     
     var viewModel: DetailsViewModel?
-
+    var cancellables = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
@@ -45,13 +47,14 @@ class DetailsViewController: UIViewController {
 
     
     func setupBinding() {
-        self.viewModel?.isFavorite.addObserver(isFiringNow: false) { [weak self] isFavorite in
+        self.viewModel?.$isFavorite.receive(on: DispatchQueue.main).dropFirst().sink { [weak self] isFavorite in
                 if isFavorite {
                     self?.favoriteButtonUI()
                 } else {
                     self?.unFavoriteButtonUI()
                 }
             }
+        .store(in: &cancellables)
     }
     
     func unFavoriteButtonUI() {
@@ -63,7 +66,7 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func favoriteTapped(_ sender: UIButton) {
-        if self.viewModel?.isFavorite.value ?? false {
+        if self.viewModel?.isFavorite ?? false {
                 viewModel?.unFavoriteMovie()
             } else {
                 viewModel?.favoriteMovie()

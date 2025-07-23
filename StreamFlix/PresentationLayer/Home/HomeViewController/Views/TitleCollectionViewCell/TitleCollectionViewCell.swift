@@ -7,6 +7,8 @@
 
 import UIKit
 import SDWebImage
+import Combine
+
 class TitleCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
@@ -16,6 +18,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favoriteUnFavoritButton: UIButton!
     static let identifier = "TitleCollectionViewCell"
     var viewModel: RowViewModel?
+    var cancellables =  Set<AnyCancellable>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,13 +41,14 @@ class TitleCollectionViewCell: UICollectionViewCell {
     
     func setupBinding() {
         if let viewModel = self.viewModel as? TitleCollectionViewCellViewModel {
-            viewModel.isFavorite.addObserver(isFiringNow: false) { [weak self] isFavorite in
+            viewModel.$isFavorite.receive(on: DispatchQueue.main).dropFirst().sink { [weak self] isFavorite in
                 if isFavorite {
                     self?.favoriteButtonUI()
                 } else {
                     self?.unFavoriteButtonUI()
                 }
             }
+            .store(in: &cancellables)
         }
     }
     
@@ -58,7 +62,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
     
     @IBAction func favoriteUnFavoritTapped(_ sender: UIButton) {
         if let viewModel = self.viewModel as? TitleCollectionViewCellViewModel {
-            if viewModel.isFavorite.value {
+            if viewModel.isFavorite {
                 viewModel.unFavoriteMovie()
             } else {
                 viewModel.favoriteMovie()
