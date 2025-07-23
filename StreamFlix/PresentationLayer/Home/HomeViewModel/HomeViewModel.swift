@@ -5,6 +5,7 @@
 //  Created by Ramez Hamdy on 17/07/2025.
 //
 import Combine
+import Foundation
 
 enum MoviesSection: String {
     case trendingMovies = "Trending Movies"
@@ -222,87 +223,116 @@ class HomeViewModel {
 }
 
 extension HomeViewModel {
-    func getTrendingMovies() {
+    
+    func fetchAllSectionsData() {
+        let group = DispatchGroup()
+        
+        group.enter()
+        self.getTrendingMovies {
+            group.leave()
+        }
+        
+        group.enter()
+        self.getTrendingTV {
+            group.leave()
+        }
+        
+        group.enter()
+        self.getPopularMovies {
+            group.leave()
+        }
+        
+        group.enter()
+        self.getUpcomingMovies {
+            group.leave()
+        }
+        
+        group.enter()
+        self.getTopRatedMovies {
+            group.leave()
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            self?.buildViewModels()
+        }
+    }
+    
+    func getTrendingMovies(completion: @escaping (() -> ())) {
         self.getTrendingMoviesUseCase.getTrendingMovies { [weak self] trendingMovies in
+            defer{completion()}
             switch trendingMovies {
             case .success(let Title):
                 self?.trendingMovies = Title.results
                 self?.insertMoviesBySectionUseCase?.insertMoviesBySection(movies: Title.results, sectionName: MoviesSection.trendingMovies.rawValue)
-                self?.buildViewModels()
             case .failure(let error):
                 print("Error in fetching trending movies: \(error)")
                 if  let localMoviesData = self?.retrieveMoviesBySectionUseCase?.retrieveMoviesBySection(sectionName: MoviesSection.trendingMovies.rawValue), !localMoviesData.isEmpty {
                     self?.trendingMovies = localMoviesData
-                    self?.buildViewModels()
                 }
             }
         }
     }
     
-    func getTrendingTV() {
+    func getTrendingTV(completion: @escaping (() -> ())) {
         self.getTrendingTVUseCase.getTrendingTV { [weak self] trendingTV in
+            defer{completion()}
             switch trendingTV {
             case .success(let Title):
                 self?.trendingTV = Title.results
                 self?.insertMoviesBySectionUseCase?.insertMoviesBySection(movies: Title.results, sectionName: MoviesSection.trendingTV.rawValue)
-                self?.buildViewModels()
             case .failure(let error):
                 print("Error in fetching trending TV: \(error)")
                 if  let localMoviesData = self?.retrieveMoviesBySectionUseCase?.retrieveMoviesBySection(sectionName: MoviesSection.trendingTV.rawValue), !localMoviesData.isEmpty {
                     self?.trendingTV = localMoviesData
-                    self?.buildViewModels()
                 }
             }
         }
     }
     
     
-    func getPopularMovies() {
+    func getPopularMovies(completion: @escaping (() -> ())) {
         self.getPopularMoviesUseCase.getPopularMovies { [weak self] popularMovies in
+            defer{completion()}
             switch popularMovies {
             case .success(let Title):
                 self?.popularMovies = Title.results
                 self?.insertMoviesBySectionUseCase?.insertMoviesBySection(movies: Title.results, sectionName: MoviesSection.popular.rawValue)
-                self?.buildViewModels()
             case .failure(let error):
                 print("Error in fetching popular movies: \(error)")
                 if  let localMoviesData = self?.retrieveMoviesBySectionUseCase?.retrieveMoviesBySection(sectionName: MoviesSection.upcomingMovies.rawValue), !localMoviesData.isEmpty {
                     self?.popularMovies = localMoviesData
-                    self?.buildViewModels()
                 }
             }
         }
     }
     
-    func getUpcomingMovies() {
+    func getUpcomingMovies(completion: @escaping (() -> ())) {
         self.getUpcommingMoviesUseCase.getUpcommingMovies { [weak self] upcomingMovies in
+            defer{completion()}
             switch upcomingMovies {
             case .success(let Title):
                 self?.upcomingMovies = Title.results
                 self?.insertMoviesBySectionUseCase?.insertMoviesBySection(movies: Title.results, sectionName: MoviesSection.upcomingMovies.rawValue)
-                self?.buildViewModels()
             case .failure(let error):
                 print("Error in fetching upcomingMovies: \(error)")
                 if  let localMoviesData = self?.retrieveMoviesBySectionUseCase?.retrieveMoviesBySection(sectionName: MoviesSection.upcomingMovies.rawValue), !localMoviesData.isEmpty {
                     self?.upcomingMovies = localMoviesData
-                    self?.buildViewModels()
                 }
             }
         }
     }
     
-    func getTopRatedMovies() {
+    func getTopRatedMovies(completion: @escaping (() -> ())) {
         self.topRatedMoviesUseCase.getTopRatedMovies { [weak self] topRatedMovies in
+            defer{completion()}
             switch topRatedMovies {
             case .success(let Title):
                 self?.topRatedMovies = Title.results
                 self?.insertMoviesBySectionUseCase?.insertMoviesBySection(movies: Title.results, sectionName: MoviesSection.topRated.rawValue)
-                self?.buildViewModels()
             case .failure(let error):
                 print("Error in fetching topRatedMovies: \(error)")
                 if  let localMoviesData = self?.retrieveMoviesBySectionUseCase?.retrieveMoviesBySection(sectionName: MoviesSection.topRated.rawValue), !localMoviesData.isEmpty {
                     self?.topRatedMovies = localMoviesData
-                    self?.buildViewModels()
                 }
             }
         }

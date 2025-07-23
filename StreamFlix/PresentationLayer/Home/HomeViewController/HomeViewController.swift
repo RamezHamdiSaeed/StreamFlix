@@ -20,12 +20,8 @@ class HomeViewController: BaseViewController {
         self.setupUI()
         self.setupBinding()
         self.configureNavBar()
-        self.viewModel?.getTrendingMovies()
-        self.viewModel?.getTrendingTV()
-        self.viewModel?.getPopularMovies()
-        self.viewModel?.getUpcomingMovies()
-        self.viewModel?.getTopRatedMovies()
         self.viewModel?.buildViewModels()
+        self.viewModel?.fetchAllSectionsData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
