@@ -9,6 +9,10 @@ class CollectionViewTableViewCellViewModel: RowViewModel {
     let movies: [Movie]
     var sectionViewModels: [SectionViewModel]?
     var collectionViewCellPressedAction: ((Movie) -> ())?
+    
+    var isFavoriteMovieUseCase: IsFavoriteMovieUseCase?
+    var favoriteMovieUseCase: FavoriteMovieUseCase?
+    var unFavoriteMovieUseCase: UnFavoriteMovieUseCase?
 
     init( movies: [Movie], collectionViewCellPressedAction: ((Movie) -> ())? = nil) {
         self.movies = movies
@@ -27,9 +31,15 @@ class CollectionViewTableViewCellViewModel: RowViewModel {
         var rowViewModels: [RowViewModel] = []
         
         self.movies.forEach {
-            rowViewModels.append(TitleCollectionViewCellViewModel(movie: $0) { [weak self] movie in
+            let cellViewModel = TitleCollectionViewCellViewModel(movie: $0) { [weak self] movie in
                 self?.collectionViewCellPressedAction?(movie)
-            })
+            }
+            
+            cellViewModel.isFavoriteMovieUseCase = self.isFavoriteMovieUseCase
+            cellViewModel.favoriteMovieUseCase = self.favoriteMovieUseCase
+            cellViewModel.unFavoriteMovieUseCase = self.unFavoriteMovieUseCase
+            
+            rowViewModels.append(cellViewModel)
         }
         
         return rowViewModels

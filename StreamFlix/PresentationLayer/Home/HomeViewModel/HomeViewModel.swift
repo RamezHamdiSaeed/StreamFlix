@@ -5,6 +5,14 @@
 //  Created by Ramez Hamdy on 17/07/2025.
 //
 
+enum MoviesSection: String {
+    case trendingMovies = "Trending Movies"
+    case trendingTV = "Trending TV"
+    case popular = "Popular"
+    case upcomingMovies = "Upcoming movies"
+    case topRated = "Top Rated"
+}
+
 class HomeViewModel {
     
     let getTrendingMoviesUseCase: GetTrendingMoviesUseCase
@@ -21,6 +29,12 @@ class HomeViewModel {
     var upcomingMovies: [Movie] = []
     var topRatedMovies: [Movie] = []
     
+    
+    var isFavoriteMovieUseCase: IsFavoriteMovieUseCase?
+    var favoriteMovieUseCase: FavoriteMovieUseCase?
+    var unFavoriteMovieUseCase: UnFavoriteMovieUseCase?
+    var insertMoviesBySectionUseCase: InsertMoviesBySectionUseCase?
+    var retrieveMoviesBySectionUseCase: RetrieveMoviesBySectionUseCase?
     
     var coordinator: BaseCoordinator
     
@@ -71,7 +85,7 @@ class HomeViewModel {
     
     func trendingMoviesRowSectionViewModel(movies: [Movie]) -> SectionViewModel {
 
-        let trendingMoviesRowSectionModel = SectionModel(headerTitle: "Trending Movies", headerHeight: 200)
+        let trendingMoviesRowSectionModel = SectionModel(headerTitle: MoviesSection.trendingMovies.rawValue, headerHeight: 200)
         
         var trendingMoviesRowViewModels: [RowViewModel] = []
         
@@ -82,18 +96,24 @@ class HomeViewModel {
     }
     
     func getTrendingMoviesRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
+       let cellViewModel = CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
             if let coordinator = self?.coordinator as? HomeViewCoordinator {
                 coordinator.navToVC(presentType: .fullScreen , distination: .movieDetails(movie, .fullScreen))
             }
         }
+        
+        cellViewModel.isFavoriteMovieUseCase = self.isFavoriteMovieUseCase
+        cellViewModel.favoriteMovieUseCase = self.favoriteMovieUseCase
+        cellViewModel.unFavoriteMovieUseCase = self.unFavoriteMovieUseCase
+        
+        return cellViewModel
         
     }
     
     //MARK: TrendingTV Section
     
     func trendingTVRowSectionViewModel(movies: [Movie]) -> SectionViewModel {
-        let trendingMoviesRowSectionModel = SectionModel(headerTitle: "Trending TV", headerHeight: 200)
+        let trendingMoviesRowSectionModel = SectionModel(headerTitle: MoviesSection.trendingTV.rawValue, headerHeight: 200)
         
         var trendingMoviesRowViewModels: [RowViewModel] = []
         
@@ -104,17 +124,23 @@ class HomeViewModel {
     }
     
     func getTrendingTVRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
+        let cellViewModel = CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
             if let coordinator = self?.coordinator as? HomeViewCoordinator {
                 coordinator.navToVC(presentType: .fullScreen , distination: .movieDetails(movie, .fullScreen))
             }
         }
+        
+        cellViewModel.isFavoriteMovieUseCase = self.isFavoriteMovieUseCase
+        cellViewModel.favoriteMovieUseCase = self.favoriteMovieUseCase
+        cellViewModel.unFavoriteMovieUseCase = self.unFavoriteMovieUseCase
+        
+        return cellViewModel
     }
     
     //MARK: Popular Section
     
     func popularRowSectionViewModel(movies: [Movie]) -> SectionViewModel {
-        let trendingMoviesRowSectionModel = SectionModel(headerTitle: "Popular", headerHeight: 200)
+        let trendingMoviesRowSectionModel = SectionModel(headerTitle: MoviesSection.popular.rawValue, headerHeight: 200)
         
         var trendingMoviesRowViewModels: [RowViewModel] = []
         
@@ -125,17 +151,23 @@ class HomeViewModel {
     }
     
     func getPopularRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
+        let cellViewModel = CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
             if let coordinator = self?.coordinator as? HomeViewCoordinator {
                 coordinator.navToVC(presentType: .fullScreen , distination: .movieDetails(movie, .fullScreen))
             }
         }
+        
+        cellViewModel.isFavoriteMovieUseCase = self.isFavoriteMovieUseCase
+        cellViewModel.favoriteMovieUseCase = self.favoriteMovieUseCase
+        cellViewModel.unFavoriteMovieUseCase = self.unFavoriteMovieUseCase
+        
+        return cellViewModel
     }
     
     //MARK: UpcomingMovings Section
 
     func upcomingRowSectionViewModel(movies: [Movie]) -> SectionViewModel {
-        let trendingMoviesRowSectionModel = SectionModel(headerTitle: "Upcoming movies", headerHeight: 200)
+        let trendingMoviesRowSectionModel = SectionModel(headerTitle: MoviesSection.upcomingMovies.rawValue, headerHeight: 200)
 
         var trendingMoviesRowViewModels: [RowViewModel] = []
         
@@ -146,17 +178,23 @@ class HomeViewModel {
     }
     
     func getUpcomingRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
+        let cellViewModel = CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
             if let coordinator = self?.coordinator as? HomeViewCoordinator {
                 coordinator.navToVC(presentType: .fullScreen , distination: .movieDetails(movie, .fullScreen))
             }
         }
+        
+        cellViewModel.isFavoriteMovieUseCase = self.isFavoriteMovieUseCase
+        cellViewModel.favoriteMovieUseCase = self.favoriteMovieUseCase
+        cellViewModel.unFavoriteMovieUseCase = self.unFavoriteMovieUseCase
+        
+        return cellViewModel
     }
     
     //MARK: Top Rated Section
     
     func topRatedRowSectionViewModel(movies: [Movie]) -> SectionViewModel {
-        let trendingMoviesRowSectionModel = SectionModel(headerTitle: "Top Rated", headerHeight: 200)
+        let trendingMoviesRowSectionModel = SectionModel(headerTitle: MoviesSection.topRated.rawValue, headerHeight: 200)
         
         var trendingMoviesRowViewModels: [RowViewModel] = []
         
@@ -167,11 +205,17 @@ class HomeViewModel {
     }
     
     func getTopRatedRowViewModel(movies: [Movie]) -> RowViewModel {
-        CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
+        let cellViewModel = CollectionViewTableViewCellViewModel(movies: movies) { [weak self] movie in
             if let coordinator = self?.coordinator as? HomeViewCoordinator {
                 coordinator.navToVC(presentType: .fullScreen , distination: .movieDetails(movie, .fullScreen))
             }
         }
+        
+        cellViewModel.isFavoriteMovieUseCase = self.isFavoriteMovieUseCase
+        cellViewModel.favoriteMovieUseCase = self.favoriteMovieUseCase
+        cellViewModel.unFavoriteMovieUseCase = self.unFavoriteMovieUseCase
+        
+        return cellViewModel
     }
 }
 
@@ -181,9 +225,14 @@ extension HomeViewModel {
             switch trendingMovies {
             case .success(let Title):
                 self?.trendingMovies = Title.results
+                self?.insertMoviesBySectionUseCase?.insertMoviesBySection(movies: Title.results, sectionName: MoviesSection.trendingMovies.rawValue)
                 self?.buildViewModels()
             case .failure(let error):
                 print("Error in fetching trending movies: \(error)")
+                if  let localMoviesData = self?.retrieveMoviesBySectionUseCase?.retrieveMoviesBySection(sectionName: MoviesSection.trendingMovies.rawValue), !localMoviesData.isEmpty {
+                    self?.trendingMovies = localMoviesData
+                    self?.buildViewModels()
+                }
             }
         }
     }
@@ -193,9 +242,14 @@ extension HomeViewModel {
             switch trendingTV {
             case .success(let Title):
                 self?.trendingTV = Title.results
+                self?.insertMoviesBySectionUseCase?.insertMoviesBySection(movies: Title.results, sectionName: MoviesSection.trendingTV.rawValue)
                 self?.buildViewModels()
             case .failure(let error):
                 print("Error in fetching trending TV: \(error)")
+                if  let localMoviesData = self?.retrieveMoviesBySectionUseCase?.retrieveMoviesBySection(sectionName: MoviesSection.trendingTV.rawValue), !localMoviesData.isEmpty {
+                    self?.trendingTV = localMoviesData
+                    self?.buildViewModels()
+                }
             }
         }
     }
@@ -206,9 +260,14 @@ extension HomeViewModel {
             switch popularMovies {
             case .success(let Title):
                 self?.popularMovies = Title.results
+                self?.insertMoviesBySectionUseCase?.insertMoviesBySection(movies: Title.results, sectionName: MoviesSection.popular.rawValue)
                 self?.buildViewModels()
             case .failure(let error):
                 print("Error in fetching popular movies: \(error)")
+                if  let localMoviesData = self?.retrieveMoviesBySectionUseCase?.retrieveMoviesBySection(sectionName: MoviesSection.upcomingMovies.rawValue), !localMoviesData.isEmpty {
+                    self?.popularMovies = localMoviesData
+                    self?.buildViewModels()
+                }
             }
         }
     }
@@ -218,9 +277,14 @@ extension HomeViewModel {
             switch upcomingMovies {
             case .success(let Title):
                 self?.upcomingMovies = Title.results
+                self?.insertMoviesBySectionUseCase?.insertMoviesBySection(movies: Title.results, sectionName: MoviesSection.upcomingMovies.rawValue)
                 self?.buildViewModels()
             case .failure(let error):
                 print("Error in fetching upcomingMovies: \(error)")
+                if  let localMoviesData = self?.retrieveMoviesBySectionUseCase?.retrieveMoviesBySection(sectionName: MoviesSection.upcomingMovies.rawValue), !localMoviesData.isEmpty {
+                    self?.upcomingMovies = localMoviesData
+                    self?.buildViewModels()
+                }
             }
         }
     }
@@ -230,9 +294,14 @@ extension HomeViewModel {
             switch topRatedMovies {
             case .success(let Title):
                 self?.topRatedMovies = Title.results
+                self?.insertMoviesBySectionUseCase?.insertMoviesBySection(movies: Title.results, sectionName: MoviesSection.topRated.rawValue)
                 self?.buildViewModels()
             case .failure(let error):
                 print("Error in fetching topRatedMovies: \(error)")
+                if  let localMoviesData = self?.retrieveMoviesBySectionUseCase?.retrieveMoviesBySection(sectionName: MoviesSection.topRated.rawValue), !localMoviesData.isEmpty {
+                    self?.topRatedMovies = localMoviesData
+                    self?.buildViewModels()
+                }
             }
         }
     }

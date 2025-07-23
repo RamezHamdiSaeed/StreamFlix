@@ -73,7 +73,7 @@
                                                             <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="favoriteTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="2ux-UN-tOb"/>
+                                                            <action selector="favoriteUnFavoritTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="2ux-UN-tOb"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -102,7 +102,7 @@
             </constraints>
             <size key="customSize" width="131" height="131"/>
             <connections>
-                <outlet property="favoriteButton" destination="bB8-5M-yTi" id="EMi-Ce-ubw"/>
+                <outlet property="favoriteUnFavoritButton" destination="bB8-5M-yTi" id="EMi-Ce-ubw"/>
                 <outlet property="imageView" destination="W2t-BO-XQo" id="hIw-8Y-JQy"/>
                 <outlet property="rateLabel" destination="jCR-3u-5QA" id="IWG-Dd-afY"/>
                 <outlet property="releaseDateLabel" destination="n0o-oX-mZd" id="eMc-EK-pyR"/>

@@ -6,12 +6,14 @@
 //
 
 class MovieRepositoryImpl: MovieRepository {
-
     let movieRemoteDataSource: MovieRemoteDataSource
+    let movieLocalDataSource: MovieLocalDataSource
     
-    init(movieRemoteDataSource: MovieRemoteDataSource = MovieRemoteDataSourceImpl()) {
+    init(movieRemoteDataSource: MovieRemoteDataSource = MovieRemoteDataSourceImpl(), movieLocalDataSource: MovieLocalDataSource = MovieLocalDataSourceImpl()) {
         self.movieRemoteDataSource = movieRemoteDataSource
+        self.movieLocalDataSource = movieLocalDataSource
     }
+    // MARK: Remote (Networking)
     func getTrendingMovies(completion: @escaping (Result<Title, APIError>) -> Void) {
         self.movieRemoteDataSource.getTrendingMovies { result in
             switch result {
@@ -68,4 +70,29 @@ class MovieRepositoryImpl: MovieRepository {
     }
    
     
+}
+
+// MARK: Local DB
+extension MovieRepositoryImpl {
+    func isFavoriteMovie(movieTitle: String) -> Bool {
+        self.movieLocalDataSource.isFavoriteMovie(movieTitle: movieTitle)
+    }
+    
+    func favoriteMovie(movieTitle: String) -> Bool {
+        self.movieLocalDataSource.favoriteMovie(movieTitle: movieTitle)
+    }
+    
+    func unFavoriteMovie(movieTitle: String) -> Bool {
+        self.movieLocalDataSource.unFavoriteMovie(movieTitle: movieTitle)
+    }
+    
+    func insertMoviesBySection(movies: [Movie], sectionName: String) {
+        self.movieLocalDataSource.insertMoviesBySection(movies: movies, sectionName: sectionName)
+    }
+    
+    func retrieveMoviesBySection(sectionName: String) -> [Movie] {
+        self.movieLocalDataSource.retrieveMoviesBySection(sectionName: sectionName)
+    }
+    
+
 }

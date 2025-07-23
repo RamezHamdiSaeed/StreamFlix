@@ -13,6 +13,13 @@ class HomeViewCoordinator: BaseCoordinator {
     
     weak var viewController: UIViewController?
     
+    // MARK: reusable UseCases between multiple screens or viewControllers
+    var isFavoriteMovieUseCase: IsFavoriteMovieUseCase?
+    var favoriteMovieUseCase: FavoriteMovieUseCase?
+    var unFavoriteMovieUseCase: UnFavoriteMovieUseCase?
+    var insertMoviesBySectionUseCase: InsertMoviesBySectionUseCase?
+    var retrieveMoviesBySectionUseCase: RetrieveMoviesBySectionUseCase?
+    
     init(presentType: UIModalPresentationStyle = .fullScreen) {
         self.presentType = presentType
     }
@@ -20,6 +27,19 @@ class HomeViewCoordinator: BaseCoordinator {
     func startVC() -> UIViewController {
         let homeViewController = HomeViewController(nibName: "HomeViewController", bundle: nil)
         let homeViewModel = HomeViewModel(coordinator: self)
+        
+        self.isFavoriteMovieUseCase = IsFavoriteMovieUseCaseImpl()
+        self.favoriteMovieUseCase = FavoriteMovieUseCaseImpl()
+        self.unFavoriteMovieUseCase = UnFavoriteMovieUseCaseImpl()
+        self.insertMoviesBySectionUseCase = InsertMoviesBySectionUseCaseImpl()
+        self.retrieveMoviesBySectionUseCase = RetrieveMoviesBySectionUseCaseImpl()
+        
+        homeViewModel.isFavoriteMovieUseCase = self.isFavoriteMovieUseCase
+        homeViewModel.favoriteMovieUseCase = self.favoriteMovieUseCase
+        homeViewModel.unFavoriteMovieUseCase = self.unFavoriteMovieUseCase
+        homeViewModel.insertMoviesBySectionUseCase = self.insertMoviesBySectionUseCase
+        homeViewModel.retrieveMoviesBySectionUseCase = self.retrieveMoviesBySectionUseCase
+        
         homeViewController.viewModel = homeViewModel
         
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
@@ -33,7 +53,6 @@ class HomeViewCoordinator: BaseCoordinator {
     
     func navToVC(presentType: UIModalPresentationStyle, distination: Distination) {
         switch distination{
-            
         case .movieDetails(let movie, let modalPresentationStyle):
             self.navToMovieDetailsVC(movie: movie, modalPresentationStyle: modalPresentationStyle)
         }
@@ -41,6 +60,11 @@ class HomeViewCoordinator: BaseCoordinator {
     
     func navToMovieDetailsVC(movie: Movie, modalPresentationStyle: UIModalPresentationStyle) {
         let movieDetailsScreenCoordinator = DetailsViewCoordinator()
+        
+        movieDetailsScreenCoordinator.isFavoriteMovieUseCase = self.isFavoriteMovieUseCase
+        movieDetailsScreenCoordinator.favoriteMovieUseCase = self.favoriteMovieUseCase
+        movieDetailsScreenCoordinator.unFavoriteMovieUseCase = self.unFavoriteMovieUseCase
+        
         let movieDetailsVC = movieDetailsScreenCoordinator.startVC(movie: movie)
         movieDetailsVC.modalPresentationStyle = modalPresentationStyle
         if let navigationController = self.viewController as? UINavigationController {

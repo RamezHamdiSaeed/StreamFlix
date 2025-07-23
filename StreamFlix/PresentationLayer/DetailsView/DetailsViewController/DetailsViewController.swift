@@ -16,12 +16,18 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var language: UILabel!
     @IBOutlet weak var detailsSectionView: UIView!
+    @IBOutlet weak var favoriteUnFavoritButton: UIButton!
     
     var viewModel: DetailsViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
+        self.setupBinding()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewModel?.isFavoriteMovie()
     }
     
     func setupUI() {
@@ -37,7 +43,31 @@ class DetailsViewController: UIViewController {
         self.ratingLabel.text = "\(String(format: "%.1f", self.viewModel?.movie.voteAverage ?? 0))"
     }
 
+    
+    func setupBinding() {
+        self.viewModel?.isFavorite.addObserver(isFiringNow: false) { [weak self] isFavorite in
+                if isFavorite {
+                    self?.favoriteButtonUI()
+                } else {
+                    self?.unFavoriteButtonUI()
+                }
+            }
+    }
+    
+    func unFavoriteButtonUI() {
+        self.favoriteUnFavoritButton.setImage(UIImage(systemName: "heart"), for: .normal)
+    }
+    
+    func favoriteButtonUI() {
+        self.favoriteUnFavoritButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+    }
+    
     @IBAction func favoriteTapped(_ sender: UIButton) {
+        if self.viewModel?.isFavorite.value ?? false {
+                viewModel?.unFavoriteMovie()
+            } else {
+                viewModel?.favoriteMovie()
+            }
         
     }
 }

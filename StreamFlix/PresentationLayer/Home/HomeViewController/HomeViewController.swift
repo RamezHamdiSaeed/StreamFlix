@@ -27,6 +27,10 @@ class HomeViewController: BaseViewController {
         self.viewModel?.getTopRatedMovies()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewModel?.buildViewModels()
+    }
+    
     func setupUI() {
          self.setupTableView()
     }

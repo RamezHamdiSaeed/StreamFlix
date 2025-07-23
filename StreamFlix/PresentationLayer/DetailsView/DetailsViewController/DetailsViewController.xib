@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController" customModule="StreamFlix" customModuleProvider="target">
             <connections>
                 <outlet property="detailsSectionView" destination="PK8-MB-oYF" id="mSF-tX-uHd"/>
+                <outlet property="favoriteUnFavoritButton" destination="VOs-Qg-duH" id="eZB-c2-FAd"/>
                 <outlet property="language" destination="Wf3-56-MKq" id="xmm-iA-GqQ"/>
                 <outlet property="overviewLabel" destination="zdP-DS-Izi" id="VYb-MZ-41j"/>
                 <outlet property="posterImageView" destination="8CB-mR-I1D" id="c0k-lD-Sum"/>
