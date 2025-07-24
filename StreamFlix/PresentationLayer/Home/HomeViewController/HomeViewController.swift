@@ -11,8 +11,10 @@ import Combine
 class HomeViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var refresher: UIRefreshControl = UIRefreshControl()
     var viewModel: HomeViewModel?
     var cancellables = Set<AnyCancellable>()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,7 @@ class HomeViewController: BaseViewController {
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .sink { [weak self] _ in
                 self?.tableView.reloadData()
+                self?.refresher.endRefreshing()
         }
         .store(in: &cancellables)
     }
@@ -49,6 +52,18 @@ class HomeViewController: BaseViewController {
                                 forCellReuseIdentifier: RandomMoviePreviewViewCell.identifier)
         self.tableView.register(UINib(nibName: CollectionViewTableViewCell.identifier, bundle: nil),
                                 forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
+        self.setupTableViewRefresher()
+    }
+    
+    func setupTableViewRefresher() {
+        refresher.tintColor = .systemGray
+        refresher.backgroundColor = .systemBackground
+        refresher.addTarget(self, action: #selector(self.refreshTableView), for: .valueChanged)
+        self.tableView.addSubview(refresher)
+    }
+    
+    @objc func refreshTableView() {
+        self.viewModel?.fetchAllSectionsData()
     }
 
     func configureNavBar() {
