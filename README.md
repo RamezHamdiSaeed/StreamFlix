@@ -29,6 +29,22 @@ Two branches demonstrate reactive programming approaches:
 - `CustomObservable`: Uses a custom lightweight **Observable** implementation to mimic reactivity.
 - `main`: Uses Apple’s **Combine** framework for publisher/subscriber pattern.
 
+## 🧹 SwiftLint
+This project uses SwiftLint to ensure code style consistency and enforce best practices.
+
+Why SwiftLint?
+SwiftLint helps catch common issues such as:
+
+- Force unwrapping (!)
+
+- Long methods (complexity)
+
+- Naming violations
+
+- Unused code
+
+- Redundant return types (like -> Void)
+
 ## 🧪 Mocking API for Local Testing
 
 To simulate real API responses locally:
@@ -36,13 +52,15 @@ To simulate real API responses locally:
 - A virtual server was created using [Mockoon](https://mockoon.com/) on macOS.
 - You may see `localhost` in some configs. Be sure to switch to the actual base URL when building the production app.
 
-## 🔑 API Key
+## ✨ Code Quality with SwiftLint
 
-> ⚠️ **Important:** You need your own API key from [TheMovieDB](https://www.themoviedb.org/documentation/api) to run this app.
+This project uses [SwiftLint](https://github.com/realm/SwiftLint) to enforce Swift style and conventions:
 
-- Replace the expired key in `APICaller.swift`:
-  ```swift
-  struct Constants {
-      static let apiKey = "YOUR_API_KEY_HERE"
-      static let baseURL = "https://api.themoviedb.org"
-  }
+- Helps maintain clean, readable, and consistent code.
+- Automatically highlights issues like force unwrapping, long functions, unused code, etc.
+- Run `swiftlint` from the root directory to lint your code manually.
+
+To install SwiftLint:
+
+```sh
+brew install swiftlint
