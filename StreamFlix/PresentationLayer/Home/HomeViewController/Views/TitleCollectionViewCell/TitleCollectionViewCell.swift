@@ -19,14 +19,10 @@ class TitleCollectionViewCell: UICollectionViewCell {
     static let identifier = "TitleCollectionViewCell"
     var viewModel: RowViewModel?
     var cancellables =  Set<AnyCancellable>()
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
+
      func setupUI() {
          if let viewModel = self.viewModel as? TitleCollectionViewCellViewModel {
-             guard let posterPath = viewModel.movie.posterPath else  { return }
+             guard let posterPath = viewModel.movie.posterPath else { return }
              let imageUrl = "\(Constants.imageBaseURL)\(posterPath)"
              if let url = URL(string: imageUrl) {
                  imageView.sd_setImage(with: url, completed: nil)
@@ -38,7 +34,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
               self.layer.cornerRadius = 12
          }
     }
-    
+
     func setupBinding() {
         if let viewModel = self.viewModel as? TitleCollectionViewCellViewModel {
             viewModel.$isFavorite.receive(on: DispatchQueue.main).dropFirst().sink { [weak self] isFavorite in
@@ -51,15 +47,15 @@ class TitleCollectionViewCell: UICollectionViewCell {
             .store(in: &cancellables)
         }
     }
-    
+
     func unFavoriteButtonUI() {
         self.favoriteUnFavoritButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
-    
+
     func favoriteButtonUI() {
         self.favoriteUnFavoritButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
     }
-    
+
     @IBAction func favoriteUnFavoritTapped(_ sender: UIButton) {
         if let viewModel = self.viewModel as? TitleCollectionViewCellViewModel {
             if viewModel.isFavorite {

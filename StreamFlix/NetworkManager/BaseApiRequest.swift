@@ -9,12 +9,12 @@ import Foundation
 class BaseApiRequest {
     let baseUrl: String
     let path: String
-    var pathParams: [String: String]? = nil
-    var queryItems: [URLQueryItem]? = nil
-    var headers: [String: String]? = nil
-    var body: Encodable? = nil
+    var pathParams: [String: String]?
+    var queryItems: [URLQueryItem]?
+    var headers: [String: String]?
+    var body: Encodable?
     var method: HTTPMethod = .GET
-    
+
     init(baseUrl: String = Constants.baseURL, path: String) {
         self.baseUrl = baseUrl
         self.path = path

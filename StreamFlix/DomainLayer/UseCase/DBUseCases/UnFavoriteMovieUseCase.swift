@@ -11,7 +11,7 @@ protocol UnFavoriteMovieUseCase {
 
 class UnFavoriteMovieUseCaseImpl: UnFavoriteMovieUseCase {
     let movieRepository: MovieRepository
-    
+
     init(movieRepository: MovieRepository = MovieRepositoryImpl()) {
         self.movieRepository = movieRepository
     }

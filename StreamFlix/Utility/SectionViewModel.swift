@@ -8,11 +8,11 @@ import UIKit
 
 struct SectionViewModel {
     let sectionModel: SectionModel
-    let rowViewModels: [RowViewModel]    
+    let rowViewModels: [RowViewModel]
 }
 
 struct SectionModel {
-    var headerTitle: String? = nil
-    var headerHeight: CGFloat? = nil
+    var headerTitle: String?
+    var headerHeight: CGFloat?
     var isEnabled: Bool = true
 }

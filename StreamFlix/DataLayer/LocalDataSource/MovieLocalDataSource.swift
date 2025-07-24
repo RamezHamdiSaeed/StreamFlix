@@ -17,14 +17,14 @@ protocol MovieLocalDataSource {
 
 final class MovieLocalDataSourceImpl: MovieLocalDataSource {
     let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-    
+
     func isFavoriteMovie(movieTitle: String) -> Bool {
         if let movieEntity =  self.getMovieByTitle(title: movieTitle) {
             return movieEntity.isFavorite
         }
         return false
     }
-    
+
     func favoriteMovie(movieTitle: String) -> Bool {
         if let movieEntity =  self.getMovieByTitle(title: movieTitle) {
             movieEntity.isFavorite = true
@@ -38,8 +38,8 @@ final class MovieLocalDataSourceImpl: MovieLocalDataSource {
         }
         return false
     }
-    
-    func unFavoriteMovie(movieTitle: String) -> Bool  {
+
+    func unFavoriteMovie(movieTitle: String) -> Bool {
         if let movieEntity =  self.getMovieByTitle(title: movieTitle) {
             movieEntity.isFavorite = false
             do {
@@ -52,7 +52,7 @@ final class MovieLocalDataSourceImpl: MovieLocalDataSource {
         }
         return false
     }
-    
+
     func insertMoviesBySection(movies: [Movie], sectionName: String) {
         guard let context = self.context else { return }
 
@@ -80,7 +80,6 @@ final class MovieLocalDataSourceImpl: MovieLocalDataSource {
         }
     }
 
-    
     func retrieveMoviesBySection(sectionName: String) -> [Movie] {
         guard let context = self.context else { return [] }
 
@@ -121,7 +120,7 @@ final class MovieLocalDataSourceImpl: MovieLocalDataSource {
                 return []
             }
     }
-    
+
     private func deleteAllMovies(bySectionName sectionName: String) {
         let request: NSFetchRequest<NSFetchRequestResult> = MovieEntity.fetchRequest()
         request.predicate = NSPredicate(format: "ANY sections == %@", sectionName)
@@ -132,7 +131,7 @@ final class MovieLocalDataSourceImpl: MovieLocalDataSource {
             print("error while deleting")
         }
     }
-    
+
     private func createOrFetchSection(sectionName: String, retrieveSectionAction: ((SectionEntity) -> Void)) {
         let request: NSFetchRequest<SectionEntity> = SectionEntity.fetchRequest()
         request.predicate = NSPredicate(format: "name == %@", sectionName)
@@ -144,7 +143,7 @@ final class MovieLocalDataSourceImpl: MovieLocalDataSource {
                 let section = SectionEntity(context: context)
                 section.id = UUID()
                 section.name = sectionName
-                do{
+                do {
                     try context.save()
                     retrieveSectionAction(section)
                 } catch {
@@ -154,12 +153,11 @@ final class MovieLocalDataSourceImpl: MovieLocalDataSource {
             }
         }
     }
-    
+
     private func getMovieByTitle(title: String) -> MovieEntity? {
         let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
         request.predicate = NSPredicate(format: "title == %@", title)
         return try? context?.fetch(request).first
     }
-    
-    
+
 }

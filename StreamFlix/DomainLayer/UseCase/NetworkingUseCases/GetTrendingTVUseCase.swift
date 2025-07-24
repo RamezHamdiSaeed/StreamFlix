@@ -11,11 +11,11 @@ protocol GetTrendingTVUseCase {
 
 class GetTrendingTVUseCaseImpl: UseCase<Title, APIError>, GetTrendingTVUseCase {
     let movieRepository: MovieRepository
-    
+
     init(movieRepository: MovieRepository = MovieRepositoryImpl()) {
         self.movieRepository = movieRepository
     }
-    
+
     override func execute(completion: @escaping ((Result<Title, APIError>) -> Void)) {
         self.getTrendingTV { result in
             switch result {
@@ -26,7 +26,7 @@ class GetTrendingTVUseCaseImpl: UseCase<Title, APIError>, GetTrendingTVUseCase {
             }
         }
     }
-    
+
     func getTrendingTV(completion: @escaping ((Result<Title, APIError>) -> Void)) {
         self.movieRepository.getTrendingTV { result in
             switch result {

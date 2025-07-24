@@ -11,7 +11,7 @@ protocol MovieRepository {
     func getPopularMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
     func getUpcommingMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
     func getTopRatedMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
-    
+
     // MARK: local DB
     func isFavoriteMovie(movieTitle: String) -> Bool
     func favoriteMovie(movieTitle: String) -> Bool
@@ -19,4 +19,3 @@ protocol MovieRepository {
     func insertMoviesBySection(movies: [Movie], sectionName: String)
     func retrieveMoviesBySection(sectionName: String) -> [Movie]
 }
-

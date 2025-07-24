@@ -18,20 +18,20 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var language: UILabel!
     @IBOutlet weak var detailsSectionView: UIView!
     @IBOutlet weak var favoriteUnFavoritButton: UIButton!
-    
+
     var viewModel: DetailsViewModel?
     var cancellables = Set<AnyCancellable>()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
         self.setupBinding()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         self.viewModel?.isFavoriteMovie()
     }
-    
+
     func setupUI() {
         self.detailsSectionView.layer.cornerRadius = 25
         self.language.text = self.viewModel?.movie.originalLanguage?.uppercased() ?? ""
@@ -45,7 +45,6 @@ class DetailsViewController: UIViewController {
         self.ratingLabel.text = "\(String(format: "%.1f", self.viewModel?.movie.voteAverage ?? 0))"
     }
 
-    
     func setupBinding() {
         self.viewModel?.$isFavorite.receive(on: DispatchQueue.main).dropFirst().sink { [weak self] isFavorite in
                 if isFavorite {
@@ -56,21 +55,20 @@ class DetailsViewController: UIViewController {
             }
         .store(in: &cancellables)
     }
-    
+
     func unFavoriteButtonUI() {
         self.favoriteUnFavoritButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
-    
+
     func favoriteButtonUI() {
         self.favoriteUnFavoritButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
     }
-    
+
     @IBAction func favoriteTapped(_ sender: UIButton) {
         if self.viewModel?.isFavorite ?? false {
                 viewModel?.unFavoriteMovie()
             } else {
                 viewModel?.favoriteMovie()
             }
-        
     }
 }

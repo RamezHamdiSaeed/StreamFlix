@@ -11,11 +11,11 @@ protocol GetTopRatedMoviesUseCase {
 
 class GetTopRatedMoviesUseCaseImpl: UseCase<Title, APIError>, GetTopRatedMoviesUseCase {
     let movieRepository: MovieRepository
-    
+
     init(movieRepository: MovieRepository = MovieRepositoryImpl()) {
         self.movieRepository = movieRepository
     }
-    
+
     override func execute(completion: @escaping ((Result<Title, APIError>) -> Void)) {
         self.getTopRatedMovies { result in
             switch result {
@@ -26,7 +26,7 @@ class GetTopRatedMoviesUseCaseImpl: UseCase<Title, APIError>, GetTopRatedMoviesU
             }
         }
     }
-    
+
     func getTopRatedMovies(completion: @escaping ((Result<Title, APIError>) -> Void)) {
         self.movieRepository.getTopRatedMovies { result in
             switch result {

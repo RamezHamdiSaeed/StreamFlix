@@ -10,9 +10,9 @@ protocol GetTrendingMoviesUseCase {
 }
 
 class GetTrendingMoviesUseCaseImpl: UseCase<Title, APIError>, GetTrendingMoviesUseCase {
-    
+
     let movieRepository: MovieRepository
-    
+
     init(movieRepository: MovieRepository = MovieRepositoryImpl()) {
         self.movieRepository = movieRepository
     }
@@ -27,7 +27,7 @@ class GetTrendingMoviesUseCaseImpl: UseCase<Title, APIError>, GetTrendingMoviesU
             }
         }
     }
-    
+
     func getTrendingMovies(completion: @escaping ((Result<Title, APIError>) -> Void)) {
         self.movieRepository.getTrendingMovies { result in
             switch result {

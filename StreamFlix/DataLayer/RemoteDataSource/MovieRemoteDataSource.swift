@@ -26,7 +26,7 @@ class MovieRemoteDataSourceImpl: MovieRemoteDataSource {
             }
         }
     }
-    
+
     func getTrendingTV(completion: @escaping (Result<Title, APIError>) -> Void) {
         let apiRequest = GetTrendingTVRequest()
         APICaller.shared.networkRequest(apiRequest: apiRequest, responseType: Title.self) { result in
@@ -38,7 +38,7 @@ class MovieRemoteDataSourceImpl: MovieRemoteDataSource {
             }
         }
     }
-    
+
     func getPopularMovies(completion: @escaping (Result<Title, APIError>) -> Void) {
         let apiRequest = GetPopularMoviesRequest()
         APICaller.shared.networkRequest(apiRequest: apiRequest, responseType: Title.self) { result in
@@ -50,7 +50,7 @@ class MovieRemoteDataSourceImpl: MovieRemoteDataSource {
             }
         }
     }
-    
+
     func getUpcommingMovies(completion: @escaping (Result<Title, APIError>) -> Void) {
         let apiRequest = GetUpcommingMoviesRequest()
         APICaller.shared.networkRequest(apiRequest: apiRequest, responseType: Title.self) { result in
@@ -62,7 +62,7 @@ class MovieRemoteDataSourceImpl: MovieRemoteDataSource {
             }
         }
     }
-    
+
     func getTopRatedMovies(completion: @escaping (Result<Title, APIError>) -> Void) {
         let apiRequest = GetTopRatedMoviesRequest()
         APICaller.shared.networkRequest(apiRequest: apiRequest, responseType: Title.self) { result in
@@ -74,5 +74,5 @@ class MovieRemoteDataSourceImpl: MovieRemoteDataSource {
             }
         }
     }
-    
+
 }

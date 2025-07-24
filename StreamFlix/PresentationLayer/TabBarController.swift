@@ -11,16 +11,19 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let homeViewCoordinator: HomeViewCoordinator = .init()
         let commingSoonCoordinator: CommingSoonViewCoordinator = .init()
         let searchCoordinator: SearchViewCoordinator = .init()
         let favouritsCoordinator: FavouritsViewCoordinator = .init()
-        
-        let tabBarNavigationControllers = [homeViewCoordinator.startVC(), searchCoordinator.startVC(), commingSoonCoordinator.startVC(), favouritsCoordinator.startVC()]
-        
+
+        let tabBarNavigationControllers = [homeViewCoordinator.startVC(),
+                                           searchCoordinator.startVC(),
+                                           commingSoonCoordinator.startVC(),
+                                           favouritsCoordinator.startVC()]
+
         self.tabBar.tintColor = .label
-        
+
         setViewControllers(tabBarNavigationControllers, animated: true)
     }
 

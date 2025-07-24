@@ -57,6 +57,7 @@
 		FABDB5222E2C160F004F5C53 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDB5212E2C1601004F5C53 /* UseCase.swift */; };
 		FAD6EDAE2E28E5F500D65744 /* BaseApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6EDAD2E28E5CF00D65744 /* BaseApiRequest.swift */; };
 		FAD6EDB52E28EBB100D65744 /* GetTrendingMoviesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6EDB42E28EBA200D65744 /* GetTrendingMoviesRequest.swift */; };
+		FAD7B9942E315438009FDE4E /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FAD7B9932E31542C009FDE4E /* swiftlint.yml */; };
 		FAE518AC2E29337B005F7253 /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE518AB2E293369005F7253 /* MovieRepository.swift */; };
 		FAE518AE2E2933D0005F7253 /* GetTrendingTVUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE518AD2E2933C0005F7253 /* GetTrendingTVUseCase.swift */; };
 		FAE518B02E29358D005F7253 /* MovieRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE518AF2E293581005F7253 /* MovieRepositoryImpl.swift */; };
@@ -148,6 +149,7 @@
 		FABDB5212E2C1601004F5C53 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		FAD6EDAD2E28E5CF00D65744 /* BaseApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiRequest.swift; sourceTree = "<group>"; };
 		FAD6EDB42E28EBA200D65744 /* GetTrendingMoviesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrendingMoviesRequest.swift; sourceTree = "<group>"; };
+		FAD7B9932E31542C009FDE4E /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		FAE518AB2E293369005F7253 /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
 		FAE518AD2E2933C0005F7253 /* GetTrendingTVUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrendingTVUseCase.swift; sourceTree = "<group>"; };
 		FAE518AF2E293581005F7253 /* MovieRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 		FAEE31CD2DF988F000E9381E /* StreamFlix */ = {
 			isa = PBXGroup;
 			children = (
+				FAD7B9932E31542C009FDE4E /* swiftlint.yml */,
 				FAE518B92E294510005F7253 /* Utility */,
 				FAD6EDAF2E28E83300D65744 /* NetworkManager */,
 				FAEE31E22DF988FB00E9381E /* DataLayer */,
@@ -632,6 +635,7 @@
 			buildConfigurationList = FAA958872DBEB31E007F9E12 /* Build configuration list for PBXNativeTarget "StreamFlix" */;
 			buildPhases = (
 				FAA958572DBEB31D007F9E12 /* Sources */,
+				FA6882092E3204A60007429B /* ShellScript */,
 				FAA958582DBEB31D007F9E12 /* Frameworks */,
 				FAA958592DBEB31D007F9E12 /* Resources */,
 			);
@@ -729,6 +733,7 @@
 			packageReferences = (
 				DC8B7B382DFEE206008FB1B4 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				DC8B7B392DFEE263008FB1B4 /* XCRemoteSwiftPackageReference "netfox" */,
+				FAA495912E314F1F006B7D86 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FAA9585C2DBEB31D007F9E12 /* Products */;
@@ -748,6 +753,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAEE31D92DF988F000E9381E /* CommingSoonViewController.xib in Resources */,
+				FAD7B9942E315438009FDE4E /* swiftlint.yml in Resources */,
 				DCACA2212DFFEE6F00A9D166 /* CollectionViewTableViewCell.xib in Resources */,
 				FAEE31DA2DF988F000E9381E /* FavouritsViewController.xib in Resources */,
 				FAEE31DB2DF988F000E9381E /* RandomMoviePreviewViewCell.xib in Resources */,
@@ -776,6 +782,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FA6882092E3204A60007429B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SWIFT_PACKAGE_DIR=\"${BUILD_DIR%Build/*}SourcePackages/artifacts\"\nSWIFTLINT_CMD=$(ls \"$SWIFT_PACKAGE_DIR\"/swiftlintplugins/SwiftLintBinary/SwiftLintBinary.artifactbundle/swiftlint-*-macos/bin/swiftlint | head -n 1)\n\nif test -f \"$SWIFTLINT_CMD\" 2>&1\nthen\n    \"$SWIFTLINT_CMD\"\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FAA958572DBEB31D007F9E12 /* Sources */ = {
@@ -987,7 +1013,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1050,7 +1076,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1193,6 +1219,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.21.0;
+			};
+		};
+		FAA495912E314F1F006B7D86 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.59.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

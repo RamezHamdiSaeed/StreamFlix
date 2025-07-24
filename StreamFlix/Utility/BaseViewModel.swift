@@ -6,5 +6,5 @@
 //
 
 class BaseViewModel {
-    
+    // put here any shared reusable logic among the screens or view controllers view models
 }

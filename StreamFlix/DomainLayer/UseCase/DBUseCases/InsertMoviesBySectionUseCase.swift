@@ -11,7 +11,7 @@ protocol InsertMoviesBySectionUseCase {
 
 class InsertMoviesBySectionUseCaseImpl: InsertMoviesBySectionUseCase {
     let movieRepository: MovieRepository
-    
+
     init(movieRepository: MovieRepository = MovieRepositoryImpl()) {
         self.movieRepository = movieRepository
     }

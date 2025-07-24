@@ -9,13 +9,13 @@ import Foundation
 class RandomMoviePreviewViewModel: RowViewModel {
 
     let randomMovie: Movie
-    
+
     init(randomMovie: Movie) {
         self.randomMovie = randomMovie
     }
-    
+
     func cellIdentifier() -> String {
         RandomMoviePreviewViewCell.identifier
     }
-    
+
 }

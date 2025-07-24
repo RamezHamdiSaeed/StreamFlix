@@ -10,9 +10,9 @@ protocol RetrieveMoviesBySectionUseCase {
 }
 
 class RetrieveMoviesBySectionUseCaseImpl: RetrieveMoviesBySectionUseCase {
-    
+
     let movieRepository: MovieRepository
-    
+
     init(movieRepository: MovieRepository = MovieRepositoryImpl()) {
         self.movieRepository = movieRepository
     }

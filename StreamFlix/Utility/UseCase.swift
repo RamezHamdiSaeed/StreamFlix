@@ -6,7 +6,7 @@
 //
 import Foundation
 class UseCase<T: Decodable, U: Error> {
-    func execute(completion: @escaping (Result<T, U>) -> Void) throws -> Void {
+    func execute(completion: @escaping (Result<T, U>) -> Void) throws {
         throw NSError(domain: "Missing Implementation of Use Case", code: 0)
     }
 }

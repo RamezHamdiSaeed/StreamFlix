@@ -8,22 +8,22 @@ import Combine
 
 class TitleCollectionViewCellViewModel: RowViewModel {
     let movie: Movie
-    var cellPressedAction: ((Movie) -> ())?
+    var cellPressedAction: ((Movie) -> Void)?
 //    var isFavorite = Observable<Bool>(value: false)
    @Published var isFavorite = false
     var isFavoriteMovieUseCase: IsFavoriteMovieUseCase?
     var favoriteMovieUseCase: FavoriteMovieUseCase?
     var unFavoriteMovieUseCase: UnFavoriteMovieUseCase?
-    
-    init(movie: Movie, collectionViewCellPressedAction: ((Movie) -> ())? = nil) {
+
+    init(movie: Movie, collectionViewCellPressedAction: ((Movie) -> Void)? = nil) {
         self.movie = movie
         self.cellPressedAction = collectionViewCellPressedAction
     }
-    
+
     func isFavoriteMovie() {
         self.isFavorite = self.isFavoriteMovieUseCase?.isFavoriteMovie(movieTitle: self.movie.title ?? "") ?? false
     }
-    
+
     func favoriteMovie() {
       let isFavoriteMovieSuccess = self.favoriteMovieUseCase?.favoriteMovie(movieTitle: self.movie.title ?? "")
         if isFavoriteMovieSuccess ?? false {
@@ -32,7 +32,7 @@ class TitleCollectionViewCellViewModel: RowViewModel {
             self.isFavorite = false
         }
     }
-    
+
     func unFavoriteMovie() {
       let isUnFavoriteMovieSuccess = self.unFavoriteMovieUseCase?.unFavoriteMovie(movieTitle: self.movie.title ?? "")
         if isUnFavoriteMovieSuccess ?? false {
@@ -41,7 +41,7 @@ class TitleCollectionViewCellViewModel: RowViewModel {
             self.isFavorite = true
         }
     }
-    
+
     func cellIdentifier() -> String {
         TitleCollectionViewCell.identifier
     }
@@ -52,4 +52,3 @@ extension TitleCollectionViewCellViewModel: CellPressible {
         self.cellPressedAction?(self.movie)
     }
 }
-
