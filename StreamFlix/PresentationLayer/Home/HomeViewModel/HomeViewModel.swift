@@ -57,15 +57,26 @@ class HomeViewModel {
     func buildViewModels() {
 
         var sectionViewModels = [SectionViewModel]()
+
         if let randomMovie = trendingMovies.randomElement() {
             sectionViewModels.append(self.randomMoviePreviewRowSectionViewModel(movie: randomMovie))
         }
 
-        sectionViewModels.append(self.trendingMoviesRowSectionViewModel(movies: trendingMovies))
-        sectionViewModels.append(self.trendingTVRowSectionViewModel(movies: trendingTV))
-        sectionViewModels.append(self.popularRowSectionViewModel(movies: popularMovies))
-        sectionViewModels.append(self.upcomingRowSectionViewModel(movies: upcomingMovies))
-        sectionViewModels.append(self.topRatedRowSectionViewModel(movies: topRatedMovies))
+        if !self.trendingMovies.isEmpty {
+            sectionViewModels.append(self.trendingMoviesRowSectionViewModel(movies: trendingMovies))
+        }
+        if !self.trendingTV.isEmpty {
+            sectionViewModels.append(self.trendingTVRowSectionViewModel(movies: trendingTV))
+        }
+        if !self.popularMovies.isEmpty {
+            sectionViewModels.append(self.popularRowSectionViewModel(movies: popularMovies))
+        }
+        if !self.upcomingMovies.isEmpty {
+            sectionViewModels.append(self.upcomingRowSectionViewModel(movies: upcomingMovies))
+        }
+        if !self.topRatedMovies.isEmpty {
+            sectionViewModels.append(self.topRatedRowSectionViewModel(movies: topRatedMovies))
+        }
 
         self.sectionViewModels = sectionViewModels
     }

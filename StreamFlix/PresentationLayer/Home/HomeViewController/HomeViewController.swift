@@ -12,9 +12,15 @@ class HomeViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var refresher: UIRefreshControl = UIRefreshControl()
+    var noDataTableViewFeedbackImage: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "No Data")
+        return imageView
+    }()
+
     var viewModel: HomeViewModel?
     var cancellables = Set<AnyCancellable>()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +39,24 @@ class HomeViewController: BaseViewController {
          self.setupTableView()
     }
 
+    func showNoDataTableViewFeedback(isVisible: Bool) {
+        if isVisible {
+            self.addSubViewOfNoDataTableViewFeedback()
+            return
+        }
+        self.noDataTableViewFeedbackImage.removeFromSuperview()
+    }
+
+    func addSubViewOfNoDataTableViewFeedback() {
+        let safeAreaTopInset = self.view.safeAreaInsets.top
+        let tableViewRefresherSpace = 20.0
+        self.noDataTableViewFeedbackImage.frame = CGRect(x: 0,
+                                                         y: self.tableView.frame.origin.y + safeAreaTopInset + tableViewRefresherSpace,
+                                                         width: self.tableView.frame.width,
+                                                         height: self.tableView.frame.height - safeAreaTopInset - tableViewRefresherSpace)
+        self.view.addSubview(self.noDataTableViewFeedbackImage)
+    }
+
     func setupBinding() {
         /* here i'm using debounce to prevent many threads in the background
          changing the Published property (Observable) at the same time
@@ -40,9 +64,10 @@ class HomeViewController: BaseViewController {
         self.viewModel?.$sectionViewModels
             .dropFirst()
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
-            .sink { [weak self] _ in
+            .sink { [weak self] sectionViewModels in
                 self?.tableView.reloadData()
                 self?.refresher.endRefreshing()
+                self?.showNoDataTableViewFeedback(isVisible: sectionViewModels.isEmpty)
         }
         .store(in: &cancellables)
     }
@@ -54,14 +79,14 @@ class HomeViewController: BaseViewController {
                                 forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
         self.setupTableViewRefresher()
     }
-    
+
     func setupTableViewRefresher() {
         refresher.tintColor = .systemGray
         refresher.backgroundColor = .systemBackground
         refresher.addTarget(self, action: #selector(self.refreshTableView), for: .valueChanged)
         self.tableView.addSubview(refresher)
     }
-    
+
     @objc func refreshTableView() {
         self.viewModel?.fetchAllSectionsData()
     }
