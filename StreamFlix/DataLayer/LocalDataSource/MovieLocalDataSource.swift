@@ -54,6 +54,8 @@ final class MovieLocalDataSourceImpl: MovieLocalDataSource {
     }
 
     func insertMoviesBySection(movies: [Movie], sectionName: String) {
+        let favoriteMovies = self.retrieveFavoriteMovies()
+
         guard let context = self.context else { return }
 
         self.deleteAllMovies(bySectionName: sectionName)
@@ -62,6 +64,9 @@ final class MovieLocalDataSourceImpl: MovieLocalDataSource {
             for movie in movies {
                 let movieEntity = MovieEntity(context: context)
                 movieEntity.id = UUID()
+                if favoriteMovies.contains(where: { $0.title == movie.title }) {
+                    movieEntity.isFavorite = true
+                }
                 movieEntity.title = movie.title
                 movieEntity.poster = movie.posterPath
                 movieEntity.rating = movie.voteAverage ?? 0.0
@@ -78,6 +83,28 @@ final class MovieLocalDataSourceImpl: MovieLocalDataSource {
                 print("Failed to save movies")
             }
         }
+    }
+
+    func retrieveFavoriteMovies() -> [Movie] {
+        guard let context = self.context else { return [] }
+
+        let movieRequest: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
+        movieRequest.predicate = NSPredicate(format: "isFavorite == true")
+
+        if let movieEntities = try? context.fetch(movieRequest) {
+            return movieEntities.map {
+                Movie(backdropPath: nil,
+                      id: nil, title: $0.title,
+                      originalTitle: nil, overview: $0.overview,
+                      posterPath: $0.poster, mediaType: nil, adult: nil,
+                      originalLanguage: $0.language, genreIds: nil,
+                      popularity: nil, releaseDate: $0.releaseDate,
+                      video: nil, voteAverage: $0.rating, voteCount: nil)
+            }
+        } else {
+            return []
+        }
+
     }
 
     func retrieveMoviesBySection(sectionName: String) -> [Movie] {

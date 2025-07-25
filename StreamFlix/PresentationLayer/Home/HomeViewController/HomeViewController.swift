@@ -51,9 +51,9 @@ class HomeViewController: BaseViewController {
         let safeAreaTopInset = self.view.safeAreaInsets.top
         let tableViewRefresherSpace = 20.0
         self.noDataTableViewFeedbackImage.frame = CGRect(x: 0,
-                                                         y: self.tableView.frame.origin.y + safeAreaTopInset + tableViewRefresherSpace,
-                                                         width: self.tableView.frame.width,
-                                                         height: self.tableView.frame.height - safeAreaTopInset - tableViewRefresherSpace)
+        y: self.tableView.frame.origin.y + safeAreaTopInset + tableViewRefresherSpace,
+        width: self.tableView.frame.width,
+        height: self.tableView.frame.height - safeAreaTopInset - tableViewRefresherSpace)
         self.view.addSubview(self.noDataTableViewFeedbackImage)
     }
 
