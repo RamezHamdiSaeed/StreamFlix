@@ -64,3 +64,13 @@ To install SwiftLint:
 
 ```sh
 brew install swiftlint
+```
+## 💡 Handling Network and Database Failures
+
+To enhance user experience, the app gracefully handles both **network request failures** and **local database access failures** by:
+
+- Displaying a **friendly feedback image** when no data is available due to an error.
+- Supporting with a transparent PNG image background.
+- Providing a **pull-to-refresh (Refresher)** mechanism to retry fetching data once the internet connection is restored.
+
+This approach ensures the user is clearly informed when something goes wrong, while offering a seamless way to recover without restarting the app.
