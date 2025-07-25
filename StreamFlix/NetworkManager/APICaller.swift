@@ -1,10 +1,12 @@
 import Foundation
 
 struct Constants {
-//    static let baseURL = "https://api.themoviedb.org"
-    static let baseURL = "http://localhost:3000"
-    static let apiKey = "YOUR_API_KEY_HERE"
+    static let baseURL = "https://api.themoviedb.org"
+//    static let baseURL = "http://localhost:3000"
     static let imageBaseURL = "https://image.tmdb.org/t/p/w500"
+    static let youtubeBaseURL = "https://youtube.googleapis.com/youtube/v3/search"
+    static let apiKey = "Enter_Your_API_Key_Here"
+    static let youtubeAPIKEY = "Enter_Your_YouTube_API_Key_Here"
 }
 
 enum APIError: Error {

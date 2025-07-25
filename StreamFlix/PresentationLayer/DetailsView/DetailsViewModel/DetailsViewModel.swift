@@ -13,6 +13,8 @@ class DetailsViewModel: BaseViewModel {
     var isFavoriteMovieUseCase: IsFavoriteMovieUseCase?
     var favoriteMovieUseCase: FavoriteMovieUseCase?
     var unFavoriteMovieUseCase: UnFavoriteMovieUseCase?
+    
+    var getYoutubeSearchVideosUseCase: GetYoutubeSearchVideosUseCase?
 
     @Published var isFavorite: Bool = false
 

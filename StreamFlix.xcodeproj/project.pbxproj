@@ -55,6 +55,12 @@
 		FABDB51E2E2C1125004F5C53 /* GetTrendingTVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDB51D2E2C111B004F5C53 /* GetTrendingTVRequest.swift */; };
 		FABDB5202E2C13C9004F5C53 /* GetTrendingMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDB51F2E2C13C2004F5C53 /* GetTrendingMoviesUseCase.swift */; };
 		FABDB5222E2C160F004F5C53 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDB5212E2C1601004F5C53 /* UseCase.swift */; };
+		FAD188182E3396E20059F83B /* GetYoutubeSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD188172E3387F30059F83B /* GetYoutubeSearchRequest.swift */; };
+		FAD1881A2E3397080059F83B /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD188192E3396FE0059F83B /* YoutubeSearchResponse.swift */; };
+		FAD1881C2E3398C50059F83B /* YoutubeRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1881B2E3398BF0059F83B /* YoutubeRemoteDataSource.swift */; };
+		FAD1881E2E3399B20059F83B /* YoutubeRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1881D2E3399AA0059F83B /* YoutubeRepositoryImpl.swift */; };
+		FAD188202E3399BF0059F83B /* YoutubeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1881F2E3399BA0059F83B /* YoutubeRepository.swift */; };
+		FAD188242E339A700059F83B /* GetYoutubeSearchVideosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD188232E339A6A0059F83B /* GetYoutubeSearchVideosUseCase.swift */; };
 		FAD6EDAE2E28E5F500D65744 /* BaseApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6EDAD2E28E5CF00D65744 /* BaseApiRequest.swift */; };
 		FAD6EDB52E28EBB100D65744 /* GetTrendingMoviesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6EDB42E28EBA200D65744 /* GetTrendingMoviesRequest.swift */; };
 		FAD7B9942E315438009FDE4E /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FAD7B9932E31542C009FDE4E /* swiftlint.yml */; };
@@ -147,6 +153,12 @@
 		FABDB51D2E2C111B004F5C53 /* GetTrendingTVRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrendingTVRequest.swift; sourceTree = "<group>"; };
 		FABDB51F2E2C13C2004F5C53 /* GetTrendingMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrendingMoviesUseCase.swift; sourceTree = "<group>"; };
 		FABDB5212E2C1601004F5C53 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		FAD188172E3387F30059F83B /* GetYoutubeSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetYoutubeSearchRequest.swift; sourceTree = "<group>"; };
+		FAD188192E3396FE0059F83B /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
+		FAD1881B2E3398BF0059F83B /* YoutubeRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeRemoteDataSource.swift; sourceTree = "<group>"; };
+		FAD1881D2E3399AA0059F83B /* YoutubeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeRepositoryImpl.swift; sourceTree = "<group>"; };
+		FAD1881F2E3399BA0059F83B /* YoutubeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeRepository.swift; sourceTree = "<group>"; };
+		FAD188232E339A6A0059F83B /* GetYoutubeSearchVideosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetYoutubeSearchVideosUseCase.swift; sourceTree = "<group>"; };
 		FAD6EDAD2E28E5CF00D65744 /* BaseApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiRequest.swift; sourceTree = "<group>"; };
 		FAD6EDB42E28EBA200D65744 /* GetTrendingMoviesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrendingMoviesRequest.swift; sourceTree = "<group>"; };
 		FAD7B9932E31542C009FDE4E /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
@@ -241,6 +253,7 @@
 		FA6516582DFD7137006BDE9F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				FAD188192E3396FE0059F83B /* YoutubeSearchResponse.swift */,
 				FA6516592DFD7140006BDE9F /* Title.swift */,
 			);
 			path = Entity;
@@ -260,11 +273,8 @@
 		FA9FA5652E30CB0700B95341 /* NetworkingUseCases */ = {
 			isa = PBXGroup;
 			children = (
-				FABDB51F2E2C13C2004F5C53 /* GetTrendingMoviesUseCase.swift */,
-				FAE518AD2E2933C0005F7253 /* GetTrendingTVUseCase.swift */,
-				FAB56A812E2CD1EF0010B780 /* GetPopularMoviesUseCase.swift */,
-				FAB56A832E2CD2040010B780 /* GetUpcommingMoviesUseCase.swift */,
-				FAB56A852E2CD2210010B780 /* GetTopRatedMoviesUseCase.swift */,
+				FAD188222E339A620059F83B /* Youtube */,
+				FAD188212E339A590059F83B /* TMDB */,
 			);
 			path = NetworkingUseCases;
 			sourceTree = "<group>";
@@ -403,6 +413,26 @@
 			path = DetailsViewController;
 			sourceTree = "<group>";
 		};
+		FAD188212E339A590059F83B /* TMDB */ = {
+			isa = PBXGroup;
+			children = (
+				FABDB51F2E2C13C2004F5C53 /* GetTrendingMoviesUseCase.swift */,
+				FAE518AD2E2933C0005F7253 /* GetTrendingTVUseCase.swift */,
+				FAB56A812E2CD1EF0010B780 /* GetPopularMoviesUseCase.swift */,
+				FAB56A832E2CD2040010B780 /* GetUpcommingMoviesUseCase.swift */,
+				FAB56A852E2CD2210010B780 /* GetTopRatedMoviesUseCase.swift */,
+			);
+			path = TMDB;
+			sourceTree = "<group>";
+		};
+		FAD188222E339A620059F83B /* Youtube */ = {
+			isa = PBXGroup;
+			children = (
+				FAD188232E339A6A0059F83B /* GetYoutubeSearchVideosUseCase.swift */,
+			);
+			path = Youtube;
+			sourceTree = "<group>";
+		};
 		FAD6EDAF2E28E83300D65744 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +445,7 @@
 		FAD6EDB02E28E92A00D65744 /* RemoteDataSource */ = {
 			isa = PBXGroup;
 			children = (
+				FAD1881B2E3398BF0059F83B /* YoutubeRemoteDataSource.swift */,
 				FAE518B12E293BBD005F7253 /* MovieRemoteDataSource.swift */,
 			);
 			path = RemoteDataSource;
@@ -432,6 +463,7 @@
 		FAD6EDB22E28E95500D65744 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				FAD1881D2E3399AA0059F83B /* YoutubeRepositoryImpl.swift */,
 				FAE518AF2E293581005F7253 /* MovieRepositoryImpl.swift */,
 			);
 			path = Repository;
@@ -475,6 +507,7 @@
 		FAE518AA2E29335A005F7253 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				FAD1881F2E3399BA0059F83B /* YoutubeRepository.swift */,
 				FAE518AB2E293369005F7253 /* MovieRepository.swift */,
 			);
 			path = Repository;
@@ -483,6 +516,7 @@
 		FAE518B32E293E80005F7253 /* ApiRequest */ = {
 			isa = PBXGroup;
 			children = (
+				FAD188172E3387F30059F83B /* GetYoutubeSearchRequest.swift */,
 				FAD6EDB42E28EBA200D65744 /* GetTrendingMoviesRequest.swift */,
 				FABDB51D2E2C111B004F5C53 /* GetTrendingTVRequest.swift */,
 				FAB56A7D2E2CCF3E0010B780 /* GetPopularMoviesRequest.swift */,
@@ -812,10 +846,12 @@
 				FA9FA5702E30CBAB00B95341 /* RetrieveMoviesBySectionUseCase.swift in Sources */,
 				FA9FA56C2E30CB8C00B95341 /* UnFavoriteMovieUseCase.swift in Sources */,
 				FAB56A822E2CD1FE0010B780 /* GetPopularMoviesUseCase.swift in Sources */,
+				FAD188182E3396E20059F83B /* GetYoutubeSearchRequest.swift in Sources */,
 				FAEE31CF2DF988F000E9381E /* CommingSoonViewController.swift in Sources */,
 				FAE518B22E293BC9005F7253 /* MovieRemoteDataSource.swift in Sources */,
 				FA65165A2DFD7148006BDE9F /* Title.swift in Sources */,
 				FAB56A7E2E2CCF470010B780 /* GetPopularMoviesRequest.swift in Sources */,
+				FAD1881A2E3397080059F83B /* YoutubeSearchResponse.swift in Sources */,
 				FAEE31D02DF988F000E9381E /* FavouritsViewController.swift in Sources */,
 				FAB56A842E2CD21A0010B780 /* GetUpcommingMoviesUseCase.swift in Sources */,
 				FAB5A05F2E2A8E4700E766EF /* FavouritsViewCoordinator.swift in Sources */,
@@ -833,11 +869,14 @@
 				FABDB51A2E2B892B004F5C53 /* CollectionViewTableViewModel.swift in Sources */,
 				FAEE31D32DF988F000E9381E /* SearchViewController.swift in Sources */,
 				FABA99BE2E2FAF8D002F03E9 /* DetailsViewCoordinator.swift in Sources */,
+				FAD188202E3399BF0059F83B /* YoutubeRepository.swift in Sources */,
 				FAB5A05C2E2A8C4D00E766EF /* SearchViewCoordinator.swift in Sources */,
+				FAD188242E339A700059F83B /* GetYoutubeSearchVideosUseCase.swift in Sources */,
 				FA63AFF62E2D682600F693CC /* RandomMoviePreviewViewModel.swift in Sources */,
 				FAB5A0592E2A89B600E766EF /* CommingSoonViewCoordinator.swift in Sources */,
 				FAD6EDB52E28EBB100D65744 /* GetTrendingMoviesRequest.swift in Sources */,
 				DCACA22B2DFFFACB00A9D166 /* TitleCollectionViewCell.swift in Sources */,
+				FAD1881C2E3398C50059F83B /* YoutubeRemoteDataSource.swift in Sources */,
 				FABDB5222E2C160F004F5C53 /* UseCase.swift in Sources */,
 				FAE518AC2E29337B005F7253 /* MovieRepository.swift in Sources */,
 				FABDB5132E2B878A004F5C53 /* SectionViewModel.swift in Sources */,
@@ -854,6 +893,7 @@
 				FA9FA55D2E30A5DF00B95341 /* MovieEntity+CoreDataProperties.swift in Sources */,
 				FA9FA55E2E30A5DF00B95341 /* SectionEntity+CoreDataClass.swift in Sources */,
 				FA9FA55F2E30A5DF00B95341 /* SectionEntity+CoreDataProperties.swift in Sources */,
+				FAD1881E2E3399B20059F83B /* YoutubeRepositoryImpl.swift in Sources */,
 				FABDB50F2E2B86BF004F5C53 /* RowViewModel.swift in Sources */,
 				FAE518B72E294081005F7253 /* HomeViewModel.swift in Sources */,
 				FABDB51C2E2B8A8C004F5C53 /* TitleCollectionViewCellViewModel.swift in Sources */,

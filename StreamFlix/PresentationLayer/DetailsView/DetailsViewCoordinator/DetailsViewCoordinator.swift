@@ -26,6 +26,8 @@ class DetailsViewCoordinator: BaseCoordinator {
         viewModel.isFavoriteMovieUseCase = self.isFavoriteMovieUseCase
         viewModel.favoriteMovieUseCase = self.favoriteMovieUseCase
         viewModel.unFavoriteMovieUseCase = self.unFavoriteMovieUseCase
+        
+        viewModel.getYoutubeSearchVideosUseCase = GetYoutubeSearchVideosUseCaseImpl()
 
         let detailsViewController = DetailsViewController(nibName: "DetailsViewController", bundle: nil)
         detailsViewController.viewModel = viewModel

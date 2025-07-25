@@ -14,11 +14,14 @@
                 <outlet property="favoriteUnFavoritButton" destination="VOs-Qg-duH" id="eZB-c2-FAd"/>
                 <outlet property="language" destination="Wf3-56-MKq" id="xmm-iA-GqQ"/>
                 <outlet property="overviewLabel" destination="zdP-DS-Izi" id="VYb-MZ-41j"/>
+                <outlet property="playImageView" destination="5MP-L3-Du9" id="0FG-Xg-Brf"/>
                 <outlet property="posterImageView" destination="8CB-mR-I1D" id="c0k-lD-Sum"/>
+                <outlet property="posterView" destination="qLu-mc-aTP" id="PDq-UX-3S3"/>
                 <outlet property="ratingLabel" destination="sXF-3N-gby" id="fnb-dc-plz"/>
                 <outlet property="releaseDateLabel" destination="89O-Rg-mnm" id="b8T-Wb-wqR"/>
                 <outlet property="titleLabel" destination="r17-H7-vvS" id="rSj-wW-T2G"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="j3V-rs-Yty"/>
+                <outlet property="wkWebView" destination="qbf-aa-jy1" id="GOe-cv-742"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -35,12 +38,43 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="xmT-QJ-4I1">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="633"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movieThumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="8CB-mR-I1D">
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j39-qJ-hLV" userLabel="thumbnailAndPlayMovie">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="400"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="400" id="Flz-Oh-CxW"/>
-                                            </constraints>
-                                        </imageView>
+                                            <subviews>
+                                                <wkWebView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbf-aa-jy1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="400"/>
+                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <wkWebViewConfiguration key="configuration">
+                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                        <wkPreferences key="preferences"/>
+                                                    </wkWebViewConfiguration>
+                                                </wkWebView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLu-mc-aTP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="400"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movieThumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="8CB-mR-I1D">
+                                                            <rect key="frame" x="0.0" y="0.0" width="393" height="400"/>
+                                                        </imageView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5MP-L3-Du9">
+                                                            <rect key="frame" x="144" y="135.66666666666669" width="105" height="89"/>
+                                                            <color key="tintColor" systemColor="systemRedColor"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="400" id="KYY-TJ-Do5"/>
+                                                        <constraint firstItem="5MP-L3-Du9" firstAttribute="centerX" secondItem="qLu-mc-aTP" secondAttribute="centerX" id="L25-sP-eZG"/>
+                                                        <constraint firstItem="5MP-L3-Du9" firstAttribute="centerY" secondItem="qLu-mc-aTP" secondAttribute="centerY" constant="-20" id="MZn-ZQ-NJE"/>
+                                                        <constraint firstAttribute="bottom" secondItem="8CB-mR-I1D" secondAttribute="bottom" id="TBG-ym-m7d"/>
+                                                        <constraint firstAttribute="trailing" secondItem="8CB-mR-I1D" secondAttribute="trailing" id="exm-aH-SGN"/>
+                                                        <constraint firstItem="8CB-mR-I1D" firstAttribute="leading" secondItem="qLu-mc-aTP" secondAttribute="leading" id="f8o-Z4-7EB"/>
+                                                        <constraint firstItem="5MP-L3-Du9" firstAttribute="height" secondItem="qLu-mc-aTP" secondAttribute="height" multiplier="0.32" constant="-34.666666666666657" id="nsn-sb-BZa"/>
+                                                        <constraint firstItem="5MP-L3-Du9" firstAttribute="width" secondItem="qLu-mc-aTP" secondAttribute="width" multiplier="0.610687" constant="-135" id="va7-AX-6p8"/>
+                                                        <constraint firstItem="8CB-mR-I1D" firstAttribute="top" secondItem="qLu-mc-aTP" secondAttribute="top" id="vtq-0N-NXl"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PK8-MB-oYF" userLabel="DetailsSection">
                                             <rect key="frame" x="0.0" y="380" width="393" height="253"/>
                                             <subviews>
@@ -170,21 +204,22 @@
                 <constraint firstAttribute="bottom" secondItem="hlg-KB-VF3" secondAttribute="bottom" id="vxW-UZ-24F"/>
                 <constraint firstItem="hlg-KB-VF3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yoN-wB-Nlm"/>
             </constraints>
-            <point key="canvasLocation" x="74.045801526717554" y="109.85915492957747"/>
+            <point key="canvasLocation" x="-27" y="196"/>
         </view>
     </objects>
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="movieThumbnail" width="960" height="1201"/>
+        <image name="play.fill" catalog="system" width="120" height="128"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

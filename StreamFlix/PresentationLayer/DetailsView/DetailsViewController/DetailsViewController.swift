@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 import Combine
+import WebKit
 
 class DetailsViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
@@ -19,6 +20,10 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var detailsSectionView: UIView!
     @IBOutlet weak var favoriteUnFavoritButton: UIButton!
 
+    @IBOutlet weak var wkWebView: WKWebView!
+    @IBOutlet weak var posterView: UIView!
+    
+    @IBOutlet weak var playImageView: UIImageView!
     var viewModel: DetailsViewModel?
     var cancellables = Set<AnyCancellable>()
 
@@ -43,8 +48,34 @@ class DetailsViewController: UIViewController {
         }
         self.titleLabel.text = self.viewModel?.movie.title ?? "UnKnown"
         self.ratingLabel.text = "\(String(format: "%.1f", self.viewModel?.movie.voteAverage ?? 0))"
+        self.configurePlayButton()
     }
+    
+    func configurePlayButton() {
+        let uITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.setupWKWebView))
+        self.playImageView.addGestureRecognizer(uITapGestureRecognizer)
+        self.playImageView.isUserInteractionEnabled = true
 
+    }
+    
+    @objc func setupWKWebView () {
+        self.posterView.isHidden = true
+        self.wkWebView.isHidden = false
+        self.wkWebView.configuration.allowsInlineMediaPlayback = true
+        self.viewModel?.getYoutubeSearchVideosUseCase?.fetchVideos(query: self.viewModel?.movie.title ?? "") { [weak self] youtubeSearchResponse in
+            switch youtubeSearchResponse {
+            case .success(let youtubeSearchResponse):
+                if let url = URL(string: "https://www.youtube.com/embed/\(String(describing: youtubeSearchResponse.items.first?.id.videoId ?? ""))") {
+                    DispatchQueue.main.sync {
+                        self?.wkWebView.load(URLRequest(url: url))
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     func setupBinding() {
         self.viewModel?.$isFavorite.receive(on: DispatchQueue.main).dropFirst().sink { [weak self] isFavorite in
                 if isFavorite {
