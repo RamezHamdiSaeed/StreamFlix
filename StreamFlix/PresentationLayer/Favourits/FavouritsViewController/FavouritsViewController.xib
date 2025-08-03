@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouritsViewController" customModule="StreamFlix" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="QW3-nF-Mfv" id="gM3-JR-Oq7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,8 +18,20 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QW3-nF-Mfv">
+                    <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QW3-nF-Mfv" secondAttribute="bottom" id="RWf-c9-Cch"/>
+                <constraint firstItem="QW3-nF-Mfv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RwW-kU-6UV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QW3-nF-Mfv" secondAttribute="trailing" id="fh9-OH-xYS"/>
+                <constraint firstItem="QW3-nF-Mfv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zrm-gC-yK7"/>
+            </constraints>
             <point key="canvasLocation" x="71" y="20"/>
         </view>
     </objects>

@@ -8,6 +8,7 @@ import CoreData
 import UIKit
 
 protocol MovieLocalDataSource {
+    func retrieveFavoriteMovies() -> [Movie]
     func isFavoriteMovie(movieTitle: String) -> Bool
     func favoriteMovie(movieTitle: String) -> Bool
     func unFavoriteMovie(movieTitle: String) -> Bool

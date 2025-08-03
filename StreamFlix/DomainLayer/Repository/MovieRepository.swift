@@ -13,6 +13,7 @@ protocol MovieRepository {
     func getTopRatedMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
 
     // MARK: local DB
+    func retrieveFavoriteMovies() -> [Movie]
     func isFavoriteMovie(movieTitle: String) -> Bool
     func favoriteMovie(movieTitle: String) -> Bool
     func unFavoriteMovie(movieTitle: String) -> Bool

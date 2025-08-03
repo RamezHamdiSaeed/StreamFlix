@@ -74,6 +74,10 @@ class MovieRepositoryImpl: MovieRepository {
 
 // MARK: Local DB
 extension MovieRepositoryImpl {
+    
+    func retrieveFavoriteMovies() -> [Movie] {
+        self.movieLocalDataSource.retrieveFavoriteMovies()
+    }
     func isFavoriteMovie(movieTitle: String) -> Bool {
         self.movieLocalDataSource.isFavoriteMovie(movieTitle: movieTitle)
     }
