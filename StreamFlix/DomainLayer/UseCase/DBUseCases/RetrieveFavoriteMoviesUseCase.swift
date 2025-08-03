@@ -9,7 +9,7 @@ protocol RetrieveFavoriteMoviesUseCase {
     func retrieveFavoriteMovies() -> [Movie]
 }
 
-class RetrieveFavoriteMoviesUseCaseImpl: RetrieveFavoriteMoviesUseCase {
+class RetrieveFavoriteMoviesUseCaseImpl: RetrieveFavoriteMoviesUseCase, UseCase {
     
     let movieRepository: MovieRepository
     
@@ -19,5 +19,10 @@ class RetrieveFavoriteMoviesUseCaseImpl: RetrieveFavoriteMoviesUseCase {
     
     func retrieveFavoriteMovies() -> [Movie] {
         self.movieRepository.retrieveFavoriteMovies()
+    }
+    
+    func execute(completion: @escaping (Result<Any, any Error>) -> Void) {
+        let movies = self.retrieveFavoriteMovies()
+        completion(.success(movies))
     }
 }

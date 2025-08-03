@@ -9,7 +9,7 @@ protocol GetTrendingMoviesUseCase {
     func getTrendingMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
 }
 
-class GetTrendingMoviesUseCaseImpl: UseCase<Title, APIError>, GetTrendingMoviesUseCase {
+class GetTrendingMoviesUseCaseImpl: GetTrendingMoviesUseCase, UseCase {
 
     let movieRepository: MovieRepository
 
@@ -17,7 +17,7 @@ class GetTrendingMoviesUseCaseImpl: UseCase<Title, APIError>, GetTrendingMoviesU
         self.movieRepository = movieRepository
     }
 
-    override func execute(completion: @escaping (Result<Title, APIError>) -> Void) {
+     func execute(completion: @escaping (Result<Any, any Error>) -> Void) {
         self.getTrendingMovies { result in
             switch result {
             case .success(let title):

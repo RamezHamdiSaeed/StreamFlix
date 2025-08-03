@@ -16,8 +16,8 @@ class FavouritsViewCoordinator: BaseCoordinator {
     }
 
     func startVC() -> UIViewController {
-        let favouritsViewController = FavouritsViewController(nibName: "FavouritsViewController", bundle: nil)
-        let favoritsViewModel = FavoritsViewModel(retrieveFavoriteMoviesUseCase: RetrieveFavoriteMoviesUseCaseImpl(), coordinator: self)
+        let favouritsViewController = MenuViewController(nibName: "MenuViewController", bundle: nil)
+        let favoritsViewModel = MenuViewModel(retrieveFavoriteMoviesUseCase: RetrieveFavoriteMoviesUseCaseImpl(), coordinator: self)
 
         favouritsViewController.viewModel = favoritsViewModel
 

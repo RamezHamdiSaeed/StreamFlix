@@ -70,6 +70,7 @@ class MovieTableViewCell: UITableViewCell, RowViewCell {
             self.viewModel = viewModel
             self.setupBinding()
             self.setupUI()
+            viewModel.isFavoriteMovie()
         }
     }
 }

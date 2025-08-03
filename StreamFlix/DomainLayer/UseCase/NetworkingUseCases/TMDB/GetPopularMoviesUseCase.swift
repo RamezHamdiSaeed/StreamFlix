@@ -9,14 +9,15 @@ protocol GetPopularMoviesUseCase {
     func getPopularMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
 }
 
-class GetPopularMoviesUseCaseImpl: UseCase<Title, APIError>, GetPopularMoviesUseCase {
+class GetPopularMoviesUseCaseImpl: UseCase, GetPopularMoviesUseCase {
+    
     let movieRepository: MovieRepository
 
     init(movieRepository: MovieRepository = MovieRepositoryImpl()) {
         self.movieRepository = movieRepository
     }
 
-    override func execute(completion: @escaping ((Result<Title, APIError>) -> Void)) {
+    func execute(completion: @escaping ((Result<Any, any Error>) -> Void)) {
         self.getPopularMovies { result in
             switch result {
             case .success(let title):

@@ -8,27 +8,34 @@ import Combine
 
 class MovieTableViewModel: RowViewModel {
     
-    let favoriteMovieUseCase: FavoriteMovieUseCase?
-    let unFavoriteMovieUseCase: UnFavoriteMovieUseCase?
+    let isFavoriteMovieUseCase: IsFavoriteMovieUseCase
+    let favoriteMovieUseCase: FavoriteMovieUseCase
+    let unFavoriteMovieUseCase: UnFavoriteMovieUseCase
     let cellPressedAction: ((Movie) -> Void)?
 
     @Published var isFavorite: Bool = true
 
     let movie: Movie
 
-    init(favoriteMovieUseCase: FavoriteMovieUseCase? = FavoriteMovieUseCaseImpl(),
-         unFavoriteMovieUseCase: UnFavoriteMovieUseCase? = UnFavoriteMovieUseCaseImpl(),
+    init(isFavoriteMovieUseCase: IsFavoriteMovieUseCase = IsFavoriteMovieUseCaseImpl(),
+         favoriteMovieUseCase: FavoriteMovieUseCase = FavoriteMovieUseCaseImpl(),
+         unFavoriteMovieUseCase: UnFavoriteMovieUseCase = UnFavoriteMovieUseCaseImpl(),
          movie: Movie,
          cellPressedAction: ((Movie) -> Void)?) {
+        self.isFavoriteMovieUseCase = isFavoriteMovieUseCase
         self.favoriteMovieUseCase = favoriteMovieUseCase
         self.unFavoriteMovieUseCase = unFavoriteMovieUseCase
         self.movie = movie
         self.cellPressedAction = cellPressedAction
     }
 
+    func isFavoriteMovie() {
+        self.isFavorite = self.isFavoriteMovieUseCase.isFavoriteMovie(movieTitle: self.movie.title ?? "")
+    }
+    
     func favoriteMovie() {
-      let isFavoriteMovieSuccess = self.favoriteMovieUseCase?.favoriteMovie(movieTitle: self.movie.title ?? "")
-        if isFavoriteMovieSuccess ?? false {
+        let isFavoriteMovieSuccess = self.favoriteMovieUseCase.favoriteMovie(movieTitle: self.movie.title ?? "")
+        if isFavoriteMovieSuccess {
             self.isFavorite = true
         } else {
             self.isFavorite = false
@@ -36,8 +43,8 @@ class MovieTableViewModel: RowViewModel {
     }
 
     func unFavoriteMovie() {
-      let isUnFavoriteMovieSuccess = self.unFavoriteMovieUseCase?.unFavoriteMovie(movieTitle: self.movie.title ?? "")
-        if isUnFavoriteMovieSuccess ?? false {
+        let isUnFavoriteMovieSuccess = self.unFavoriteMovieUseCase.unFavoriteMovie(movieTitle: self.movie.title ?? "")
+        if isUnFavoriteMovieSuccess {
             self.isFavorite = false
         } else {
             self.isFavorite = true
