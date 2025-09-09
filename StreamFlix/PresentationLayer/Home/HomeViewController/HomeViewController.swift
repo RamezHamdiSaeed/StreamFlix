@@ -27,12 +27,21 @@ class HomeViewController: BaseViewController {
         self.setupUI()
         self.setupBinding()
         self.configureNavBar()
-        self.viewModel?.buildViewModels()
+        
+        // Load cached data first to show something immediately
+        self.viewModel?.loadCachedData()
+        
+        // Then fetch fresh data
         self.viewModel?.fetchAllSectionsData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.viewModel?.buildViewModels()
+        super.viewWillAppear(animated)
+        
+        // Only rebuild view models if we have data, don't trigger unnecessary reloads
+        if let viewModel = self.viewModel, viewModel.hasData() {
+            self.viewModel?.buildViewModels()
+        }
     }
 
     func setupUI() {
@@ -40,11 +49,13 @@ class HomeViewController: BaseViewController {
     }
 
     func showNoDataTableViewFeedback(isVisible: Bool) {
-        if isVisible {
-            self.addSubViewOfNoDataTableViewFeedback()
-            return
+        DispatchQueue.main.async { [weak self] in
+            if isVisible {
+                self?.addSubViewOfNoDataTableViewFeedback()
+                return
+            }
+            self?.noDataTableViewFeedbackImage.removeFromSuperview()
         }
-        self.noDataTableViewFeedbackImage.removeFromSuperview()
     }
 
     func addSubViewOfNoDataTableViewFeedback() {
@@ -58,18 +69,26 @@ class HomeViewController: BaseViewController {
     }
 
     func setupBinding() {
-        /* here i'm using debounce to prevent many threads in the background
-         changing the Published property (Observable) at the same time
-         so i add at least 500 milli secons between every change of the observable and getting notified here*/
+        // Improved reactive binding with better error handling
         self.viewModel?.$sectionViewModels
-            .dropFirst()
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .receive(on: DispatchQueue.main) // Ensure UI updates happen on main thread
             .sink { [weak self] sectionViewModels in
+                print("📱 Received section view models update: \(sectionViewModels.count) sections")
                 self?.tableView.reloadData()
                 self?.refresher.endRefreshing()
                 self?.showNoDataTableViewFeedback(isVisible: sectionViewModels.isEmpty)
         }
         .store(in: &cancellables)
+        
+        // Add loading state binding if you have one in your view model
+        self.viewModel?.$isLoading
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading && !(self?.refresher.isRefreshing ?? false) {
+                    // Show loading indicator if not already refreshing
+                }
+            }
+            .store(in: &cancellables)
     }
 
     func setupTableView() {
@@ -88,6 +107,7 @@ class HomeViewController: BaseViewController {
     }
 
     @objc func refreshTableView() {
+        print("🔄 Manual refresh triggered")
         self.viewModel?.fetchAllSectionsData()
     }
 
@@ -104,6 +124,7 @@ class HomeViewController: BaseViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         navigationController?.navigationBar.transform = .identity
     }
 
@@ -111,33 +132,44 @@ class HomeViewController: BaseViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.viewModel?.sectionViewModels[section].rowViewModels.count ?? 0
+        let count = self.viewModel?.sectionViewModels[section].rowViewModels.count ?? 0
+        return count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = self.viewModel?.sectionViewModels[indexPath.section]
-        let row = section?.rowViewModels[indexPath.row]
+        guard let section = self.viewModel?.sectionViewModels[indexPath.section],
+              indexPath.row < section.rowViewModels.count else {
+            return UITableViewCell()
+        }
+        
+        let row = section.rowViewModels[indexPath.row]
 
-        if let cell = tableView.dequeueReusableCell(withIdentifier: row?.cellIdentifier() ?? "") as? RowViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: row.cellIdentifier()) as? RowViewCell {
             cell.setup(with: row)
             return cell as? UITableViewCell ?? UITableViewCell()
         }
         return UITableViewCell()
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        self.viewModel?.sectionViewModels.count ?? 0
+        let count = self.viewModel?.sectionViewModels.count ?? 0
+        return count
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Trending Movies"
+        return self.viewModel?.sectionViewModels[section].sectionModel.headerTitle
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let header = view as? UITableViewHeaderFooterView else { return }
-        let section = self.viewModel?.sectionViewModels[section]
+        guard let header = view as? UITableViewHeaderFooterView,
+              let sectionViewModel = self.viewModel?.sectionViewModels[section] else { return }
+        
         header.textLabel?.textColor = .label
-        header.textLabel?.text = section?.sectionModel.headerTitle
+        header.textLabel?.text = sectionViewModel.sectionModel.headerTitle
         header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         header.frame = .init(x: view.bounds.origin.x + 20,
                              y: view.bounds.origin.y,
@@ -150,5 +182,4 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let offset = scrollView.contentOffset.y + defaultOffset
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
-
 }

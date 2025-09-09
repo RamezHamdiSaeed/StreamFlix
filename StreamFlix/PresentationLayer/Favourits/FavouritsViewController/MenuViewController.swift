@@ -1,5 +1,5 @@
 //
-//  DownloadsViewController.swift
+//  MenuViewController.swift
 //  StreamFlix
 //
 //  Created by Macbook on 23/05/2025.
@@ -11,6 +11,9 @@ import Combine
 class MenuViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
     var noDataTableViewFeedbackImage: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFit
@@ -34,6 +37,19 @@ class MenuViewController: BaseViewController {
 
     func setupUI() {
         self.setupTableView()
+        if let useCase = self.viewModel?.retrieveFavoriteMoviesUseCase as? GetMoviesSearchUseCase {
+            self.viewModel?.searchForMoviesByQuery = useCase
+            self.setupSearchController()
+        }
+    }
+    
+    func setupSearchController() {
+        self.searchController.searchBar.delegate = self
+        self.navigationItem.searchController = self.searchController
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.placeholder = "Search here ..."
+        definesPresentationContext = false
     }
     
     func setupTableView() {
@@ -85,7 +101,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         
         self.viewModel?.sectionViewModels.count ?? 0
@@ -103,5 +118,23 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = row as? CellPressible {
             cell.cellPressed()
         }
+    }
+}
+
+extension MenuViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let query = searchController.searchBar.text
+        self.viewModel?.searchForMoviesByQuery?.getSearchMovies(query: query) { result in
+            switch result {
+            case .success(let title):
+                self.viewModel?.favoriteMovies = title.results
+                self.viewModel?.buildViewModels()
+            case .failure:
+                self.viewModel?.favoriteMovies = []
+                self.viewModel?.buildViewModels()
+            }
+        }
+        searchBar.resignFirstResponder()
     }
 }

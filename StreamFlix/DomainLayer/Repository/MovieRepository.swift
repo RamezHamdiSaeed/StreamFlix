@@ -11,6 +11,7 @@ protocol MovieRepository {
     func getPopularMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
     func getUpcommingMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
     func getTopRatedMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
+    func getSearchMovies(query: String?, completion: @escaping ((Result<Title, APIError>) -> Void))
 
     // MARK: local DB
     func retrieveFavoriteMovies() -> [Movie]

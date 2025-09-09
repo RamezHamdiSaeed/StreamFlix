@@ -11,6 +11,7 @@ protocol MovieRemoteDataSource {
     func getPopularMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
     func getUpcommingMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
     func getTopRatedMovies(completion: @escaping ((Result<Title, APIError>) -> Void))
+    func getSearchMovies(query: String?, completion: @escaping ((Result<Title, APIError>) -> Void))
 }
 
 class MovieRemoteDataSourceImpl: MovieRemoteDataSource {
@@ -65,6 +66,19 @@ class MovieRemoteDataSourceImpl: MovieRemoteDataSource {
 
     func getTopRatedMovies(completion: @escaping (Result<Title, APIError>) -> Void) {
         let apiRequest = GetTopRatedMoviesRequest()
+        APICaller.shared.networkRequest(apiRequest: apiRequest, responseType: Title.self) { result in
+            switch result {
+            case .success(let title):
+                completion(.success(title))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getSearchMovies(query: String?, completion: @escaping (Result<Title, APIError>) -> Void) {
+        let apiRequest = GetMoviesSearchRequest()
+        apiRequest.query = query
         APICaller.shared.networkRequest(apiRequest: apiRequest, responseType: Title.self) { result in
             switch result {
             case .success(let title):

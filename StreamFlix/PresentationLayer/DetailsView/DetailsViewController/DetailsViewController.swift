@@ -66,7 +66,7 @@ class DetailsViewController: UIViewController {
             switch youtubeSearchResponse {
             case .success(let youtubeSearchResponse):
                 if let url = URL(string: "https://www.youtube.com/embed/\(String(describing: youtubeSearchResponse.items.first?.id.videoId ?? ""))") {
-                    DispatchQueue.main.sync {
+                    _ = DispatchQueue.main.sync {
                         self?.wkWebView.load(URLRequest(url: url))
                     }
                 }

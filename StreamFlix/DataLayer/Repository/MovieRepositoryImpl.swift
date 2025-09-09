@@ -69,6 +69,17 @@ class MovieRepositoryImpl: MovieRepository {
             }
         }
     }
+    
+    func getSearchMovies(query: String?, completion: @escaping ((Result<Title, APIError>) -> Void)) {
+        self.movieRemoteDataSource.getSearchMovies(query: query) { result in
+            switch result {
+            case .success(let title):
+                completion(.success(title))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 
 }
 

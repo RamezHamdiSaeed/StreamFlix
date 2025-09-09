@@ -8,6 +8,6 @@
 class GetYoutubeSearchRequest: BaseApiRequest {
     
     override init(baseUrl: String = Constants.youtubeBaseURL, path: String = "") {
-        super.init(baseUrl: baseUrl, path:  path)
+        super.init(baseUrl: baseUrl, path: path)
     }
 }

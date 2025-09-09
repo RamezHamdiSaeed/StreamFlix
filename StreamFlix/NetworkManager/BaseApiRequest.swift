@@ -21,3 +21,11 @@ class BaseApiRequest {
         self.queryItems = [URLQueryItem(name: "api_key", value: Constants.apiKey)]
     }
 }
+
+extension BaseApiRequest {
+    /* if there is networking request using parameters in the path
+     we will add it here the centralize the value of each path parameter key*/
+    enum RequestPathParametersKeys: String {
+        case some = "Some"
+    }
+}
